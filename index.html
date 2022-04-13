@@ -55,21 +55,21 @@
     <div class="loader" style="margin: auto;"></div>
     <div>
       <div id="Day1" class="tabcontent" style="display: none">
+        <div>
+          <iframe
+            src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211738&amp;authkey=AA5f5Q1VI9Yt5aE&amp;em=2&amp;wdAr=1.7777777777777777"
+            width="100%" height="400px" frameborder="0">This is an embedded
+            <a target="_blank" href="https://office.com">Microsoft Office</a>
+            presentation, powered by
+            <a target="_blank" href="https://office.com/webapps">Office</a>
+          </iframe>
+        </div>
+
         <h2 style="text-align: center;">Concurrent Metronomes</h6>
 
-          <div>
-            <iframe
-              src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211738&amp;authkey=AA5f5Q1VI9Yt5aE&amp;em=2&amp;wdAr=1.7777777777777777"
-              width="100%" height="400px" frameborder="0">This is an embedded
-              <a target="_blank" href="https://office.com">Microsoft Office</a>
-              presentation, powered by
-              <a target="_blank" href="https://office.com/webapps">Office</a>
-            </iframe>
-          </div>
-
-          <p>Over these five days, we are planning to complete 5 incredible projects. You may have seen this type of
-            video on TikTok, and today we're going to be recreating it in a way where you can show it off on your
-            personal website!</p>
+          <p>You may have seen this type of
+            video on TikTok, and today we're going to be recreating it! <b>All the necessary instructions are bolded if
+              you get lost or stuck.</b></p>
           <div style="width:60%; margin: auto;">
             <iframe width="100%" height="315" src="https://www.youtube.com/embed/MH03ZJaNe8A"
               title="YouTube video player" frameborder="0"
@@ -78,36 +78,199 @@
             </iframe>
           </div>
 
-          <p>Finished Product. You may need to click the refresh circle below for sound to work. </p>
+          <h3>Step 1 - Drawing a Circle</h3>
+
+          <p>Open this Online IDE we will be using: <a href="https://openprocessing.org/sketch/create"
+              target="blank">https://openprocessing.org/</a>.
+
+            <b>Click that link</b>, and the sketch that opens has some starter code for you.
+
+          </p>
+
+          <pre class="highlight">
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(100);
+}
+
+function draw() {
+  circle(mouseX, mouseY, 20);
+}</pre>
+
+          <p><code>setup</code> and <code>draw</code> are two "functions" like we talked about in the powerpoint. They
+            are unique because they are provided for us.
+            <code>setup</code> is run 1 time right after you click play, and <code>draw</code> is run 60 times every
+            second!
+          </p>
+          <p><b>Click the play button at the top.</b> A new circle will be drawn over your mouse 60 times each second.
+            <code>mouseX</code> and <code>mouseY</code> are two more variables provided for us. They represent the
+            x-coordinate and y-coordinate of your mouse, respectively.
+            <b>Click the <code>&lt;/&gt;</code> icon next to the play button</b> to go back to the code.
+          </p>
+
+          <p><code>createCanvas</code>, <code>background</code>, and <code>circle</code> are three more functions.
+            They create the area where we can draw, color the background,
+            and draw a circle respectively.
+          </p>
+
+          <p>Notice how the circle doesn't go away when you move your mouse. What do you
+            think
+            would happen if we <b>move the <code>background(100)</code> out of <code>setup</code> and into
+              <code>draw</code></b>?
+          </p>
+
+          <pre class="highlight">
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+  background(100);
+  circle(mouseX, mouseY, 20);
+}</pre>
+
+          <p>Next, draw some other circles in various locations, and with various sizes. The parameters for the circle
+            function are (x-coordinate, y-coordinate, circleDiameter).</p>
+
+
+          <h3>Step 2 - Circular Motion</h3>
+          <p>When you're making games and animations, you can think of the x axis on a graph as time. As
+            we move forward in time, x increases. <code>frameCount</code> is another variable provided to us
+            that tells us how long the program has been running - it starts at 0 and increases with every frame.
+            <b>Now replace the <code>circle</code> function in your code with this line: </b>
+          </p>
+
+          <p><code>circle(frameCount, 0, 20);</code></p>
+
+          <p>
+            Next, we're going to use a little trigonometry to make the circle move in a circle. Here is an
+            image that illustrates the anatomy of a wave.
+            I like to use <a href="https://www.geogebra.org/calculator"
+              target="blank">https://www.geogebra.org/calculator</a> to visualize functions.
+            Let's visualize <code>sin</code> and <code>cos</code> there.
+          </p>
+
           <div>
-            <iframe width="100%" height="500px" src="https://openprocessing.org/sketch/1540732/embed/"></iframe>
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;"
+              src="assets/images/SinWave.svg" />
           </div>
 
-          <p>Online IDE we will be using: <a href="https://openprocessing.org/"
-              target="blank">https://openprocessing.org/</a></p>
+          <p>Next, <b>replace the circle function with this line:</b></p>
+
+          <p><code>circle(cos(frameCount), 0, 20);</code></p>
+
+          <p>You should be able to see the circle wiggling in the top left corner. How can we increase the
+            size of the circle's movement? <b>Increase the amplitude of the wave times 100!</b>
+          </p>
+
+          <p></p><code>circle(100*cos(frameCount), 0, 20);</code></p>
+
+
+          <p>Now the circle is speeding around the top of the canvas. Keep in mind that (0,0) on the canvas
+            is the top left corner - x increases as you move right, and y increases as you move
+            down. So how can we move it into the center? <b>Add vertical and horizontal shift!</b>
+          </p>
+
+          <p><code>circle(100*cos(frameCount) + (width/2), height/2, 20);</code></p>
+
+          <p>Next, we want to slow the circle down. To do that we <b>increase the period of the wave</b>.</p>
+
+          <p><code>circle(100*cos(frameCount/30) + (width/2), height/2, 20);</code></p>
+
+          <p>Lastly, how can we use our knowledge of the two types of waves to create circular motion?
+            Take a look at the <code>sin</code> and <code>cos</code> graphs again. Notice that when
+            <code>cos(x) = 1</code>, <code>sin(x) = 0</code>. We can use this to give us the point (1,0).
+            If you continue through one full period of the waves, you can see the points (1, 0), (0, 1), (-1, 0),
+            (0,-1).
+            The waves compliment each other to create circular motion! <b>Replace your code with this line:</b>
+          </p>
+
+          <p><code>circle(100*cos(frameCount/30) + (width/2), 100*sin (frameCount/30) + (height/2), 20);</code></p>
+
+
+          <h3>Step 3 - Starter Code</h3>
+          <p><b>Open up this Sketch which has starter code:</b> <a href="https://openprocessing.org/sketch/1543865"
+              target="blank">https://openprocessing.org/sketch/1543865</a>. Much of the code that you need already
+            exists, but it is "commented out". This means that there are
+            two forward slashes <code>//</code> in front of it. A comment can also start in the middle of a line.
+            When we say "uncomment something", just erase those two slashes.
+          </p>
+
+          <p>
+            At the top of the Sketch, we have all our
+            variables for the program. Then we have an Entity class. Then we have the <code>setup</code> and
+            <code>draw</code> functions from before. Lastly, we have some useful functions. Click play, and you see the
+            v shape from
+            the video, but it's not in the middle. Let's quickly go over where it needs to be. Afterwards,
+            <b>replace the points x1 through y3 with the commented out points</b> in the variables at the top.
+          </p>
+
+          <p>Next, let's look at the Entity class. It has 10 properties, which is another word for variables,
+            and 5 functions. Let's talk about how we can use the trigonometry from before to bounce the entities
+            back and forth. Afterwards,
+            <b>replace the return statements with the commented out code for <code>getNewX</code> and
+              <code>getNewY</code>.</b> Remember to either erase or comment out the return statements below the new
+            lines.
+          </p>
+
+          <p>Incredible! One ball is bouncing! Next can you <b>find a line to uncomment that looks like it would play
+              the sound we want</b>?</p>
+
+          <p>Next, <b>uncomment a line that would give the entity the correct color (blue).</b> Let's add some more
+            colors from this list <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
+              target="blank">https://www.w3.org/wiki/CSS/Properties/color/keywords</a>. They need to go in the
+            <code>colors</code> list at the top, with the variables.
+          </p>
+
+          <p>Now, let's take a look at the <code>for loop</code> that creates the entities. The variable that determines
+            how many entities there are is called <code>numberOfEntities</code>. <b>Change it to add some more</b>.
+          </p>
+
+          <p>The final piece is drawing the lines between the entities. <b>Uncomment the <code>line</code> function in
+              the <code>drawShape</code> function</b>.
+          </p>
+
+          <h3>Step 4 - Finished Product</h3>
+          <p>Here is the finished Product.</p>
+          <div>
+            <iframe width="100%" height="600px" src="https://openprocessing.org/sketch/1540732/embed/"></iframe>
+          </div>
+          <p>You may need to click the refresh circle for sound to work. Feel free to copy and
+            paste this into yours at the end to get it working. If you want to save it, you will need to create an
+            account on the website we've been using. You will also need an account if you want to link this to your
+            personal website at the end.
+          </p>
+
+          <p>If we have time, here are some ideas that we can do to keep going:
+          <ul>
+            <li>Create a function that will add another ball when we click.</li>
+            <li>Choose notes to play a song.</li>
+            <li>Create an entirely new project together. Any ideas?</li>
+          </ul>
+          </p>
       </div>
 
       <div id="Day2" class="tabcontent" style="display: none">
         <p>
-        <h2 style="text-align: center;">2048 Clone</h6>
+        <h2 style="text-align: center;">Groupchat bots and language parsing</h6>
           </p>
       </div>
 
       <div id="Day3" class="tabcontent" style="display: none">
         <p>
-        <h2 style="text-align: center;">Add Your Personal Website</h6>
+        <h2 style="text-align: center;">2048 Clone</h6>
           </p>
       </div>
 
       <div id="Day4" class="tabcontent" style="display: none">
         <p>
-        <h2 style="text-align: center;">APIs</h6>
+        <h2 style="text-align: center;">???</h6>
           </p>
       </div>
 
       <div id="Day5" class="tabcontent" style="display: none">
         <p>
-        <h2 style="text-align: center;">???</h6>
+        <h2 style="text-align: center;">Add Your Personal Website</h6>
           </p>
       </div>
     </div>
