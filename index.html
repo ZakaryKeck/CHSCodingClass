@@ -38,7 +38,7 @@
 
     <div class="loader" style="margin: auto;"></div>
     <div>
-      <div id="Day1" class="tabcontent" style="display: none">
+      <!-- <div id="Day1" class="tabcontent" style="display: none">
         <div>
           <iframe
             src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211738&amp;authkey=AA5f5Q1VI9Yt5aE&amp;em=2&amp;wdAr=1.7777777777777777"
@@ -232,7 +232,7 @@ function draw() {
             <li>Create an entirely new project together. Any ideas?</li>
           </ul>
           </p>
-      </div>
+      </div> -->
 
       <div id="Day2" class="tabcontent" style="display: none">
         <h2 style="text-align: center;">Wordle</h2>
@@ -280,6 +280,46 @@ function draw() {
                 <div class="tile empty"></div>
                 <div class="tile empty"></div>
                 <div class="tile empty"></div>
+              </div>
+            </div>
+            <div id="keyboard">
+              <div class="row">
+                <button onclick="handleButtonPress('q')">q</button>
+                <button onclick="handleButtonPress('w')">w</button>
+                <button onclick="handleButtonPress('e')">e</button>
+                <button onclick="handleButtonPress('r')">r</button>
+                <button onclick="handleButtonPress('t')">t</button>
+                <button onclick="handleButtonPress('y')">y</button>
+                <button onclick="handleButtonPress('u')">u</button>
+                <button onclick="handleButtonPress('i')">i</button>
+                <button onclick="handleButtonPress('o')">o</button>
+                <button onclick="handleButtonPress('p')">p</button>
+              </div>
+              <div class="row">
+                <div class="spacer half"></div>
+                <button onclick="handleButtonPress('a')">a</button>
+                <button onclick="handleButtonPress('s')">s</button>
+                <button onclick="handleButtonPress('d')">d</button>
+                <button onclick="handleButtonPress('f')">f</button>
+                <button onclick="handleButtonPress('g')">g</button>
+                <button onclick="handleButtonPress('h')">h</button>
+                <button onclick="handleButtonPress('j')">j</button>
+                <button onclick="handleButtonPress('k')">k</button>
+                <button onclick="handleButtonPress('l')">l</button>
+                <div class="spacer half"></div>
+              </div>
+              <div class="row">
+                <button onclick="handleButtonPress('Enter')" class="one-and-a-half">Enter</button>
+                <button onclick="handleButtonPress('z')">z</button>
+                <button onclick="handleButtonPress('x')">x</button>
+                <button onclick="handleButtonPress('c')">c</button>
+                <button onclick="handleButtonPress('v')">v</button>
+                <button onclick="handleButtonPress('b')">b</button>
+                <button onclick="handleButtonPress('n')">n</button>
+                <button onclick="handleButtonPress('m')">m</button>
+                <button onclick="handleButtonPress('Backspace')" class="one-and-a-half">
+                  Back
+                </button>
               </div>
             </div>
           </div>

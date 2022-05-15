@@ -97,3 +97,9 @@ function setNextActiveRow(activeRow) {
 }
 
 function handleBackspace(activeRow) {}
+
+function handleButtonPress(letter) {
+  if (active) {
+    handleKeyPress(letter);
+  }
+}
