@@ -1,4 +1,4 @@
-word = "toddy";
+word = "mango";
 active = true;
 
 addEvent(document, "keydown", function (e) {
@@ -55,6 +55,17 @@ function handleKeyPress(key) {
 
 function handleAddRow(activeRow) {
   checkWord(activeRow);
+  let enteredWord = getEnteredWord(activeRow);
+  if (enteredWord === word) {
+    setTimeout(function () {
+      alert("Congratulations!");
+    }, 10);
+    active = false;
+  } else if (!activeRow.nextElementSibling) {
+    setTimeout(function () {
+      alert(word);
+    }, 10);
+  }
   setNextActiveRow(activeRow);
 }
 
@@ -70,14 +81,6 @@ function checkWord(activeRow) {
       x.classList.add("absent");
     }
   });
-
-  console.log(getEnteredWord(activeRow));
-  if (getEnteredWord(activeRow) === word) {
-    setTimeout(function () {
-      alert("Congratulations!");
-    }, 10);
-    active = false;
-  }
 }
 
 function getEnteredWord(activeRow) {
@@ -87,19 +90,13 @@ function getEnteredWord(activeRow) {
 }
 
 function setNextActiveRow(activeRow) {
-  if (activeRow.nextElementSibling) {
-    activeRow.nextElementSibling.classList.add("active-row");
-  } else {
-    setTimeout(function () {
-      alert("Better luck next time!");
-    }, 10);
-  }
+  activeRow.nextElementSibling.classList.add("active-row");
 }
 
 function handleBackspace(activeRow) {}
 
 function handleButtonPress(letter) {
   if (active) {
-    handleKeyPress(letter);
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: letter }));
   }
 }
