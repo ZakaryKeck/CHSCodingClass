@@ -38,7 +38,7 @@
 
     <div class="loader" style="margin: auto;"></div>
     <div>
-      <div id="Day1" class="tabcontent" style="display: none">
+      <!-- <div id="Day1" class="tabcontent" style="display: none">
         <div>
           <iframe
             src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211738&amp;authkey=AA5f5Q1VI9Yt5aE&amp;em=2&amp;wdAr=1.7777777777777777"
@@ -232,9 +232,13 @@ function draw() {
             <li>Create an entirely new project together. Any ideas?</li>
           </ul>
           </p>
-      </div>
+      </div> -->
 
       <div id="Day2" class="tabcontent" style="display: none">
+        <h2 style="text-align: center;">Wordle</h2>
+        If you're not familiar with Wordle, it's a game where you have 6 chances to guess a 5 letter word. Each letter
+        gives you some information in the form of a color, either green, gray, or yellow.
+
         <h2 style="text-align: center;">Wordle</h2>
         <div id="game">
           <div id="board-container">
@@ -286,40 +290,40 @@ function draw() {
           </div>
           <div id="keyboard">
             <div class="keyboard-row ">
-              <button onclick="document.onkeydown('q')">q</button>
-              <button onclick="handleButtonPress('w')">w</button>
-              <button onclick="handleButtonPress('e')">e</button>
-              <button onclick="handleButtonPress('r')">r</button>
-              <button onclick="handleButtonPress('t')">t</button>
-              <button onclick="handleButtonPress('y')">y</button>
-              <button onclick="handleButtonPress('u')">u</button>
-              <button onclick="handleButtonPress('i')">i</button>
-              <button onclick="handleButtonPress('o')">o</button>
-              <button onclick="handleButtonPress('p')">p</button>
+              <button onclick="game.handleKeyPress('q')">q</button>
+              <button onclick="game.handleKeyPress('w')">w</button>
+              <button onclick="game.handleKeyPress('e')">e</button>
+              <button onclick="game.handleKeyPress('r')">r</button>
+              <button onclick="game.handleKeyPress('t')">t</button>
+              <button onclick="game.handleKeyPress('y')">y</button>
+              <button onclick="game.handleKeyPress('u')">u</button>
+              <button onclick="game.handleKeyPress('i')">i</button>
+              <button onclick="game.handleKeyPress('o')">o</button>
+              <button onclick="game.handleKeyPress('p')">p</button>
             </div>
             <div class="keyboard-row ">
               <div class="spacer half"></div>
-              <button onclick="handleButtonPress('a')">a</button>
-              <button onclick="handleButtonPress('s')">s</button>
-              <button onclick="handleButtonPress('d')">d</button>
-              <button onclick="handleButtonPress('f')">f</button>
-              <button onclick="handleButtonPress('g')">g</button>
-              <button onclick="handleButtonPress('h')">h</button>
-              <button onclick="handleButtonPress('j')">j</button>
-              <button onclick="handleButtonPress('k')">k</button>
-              <button onclick="handleButtonPress('l')">l</button>
+              <button onclick="game.handleKeyPress('a')">a</button>
+              <button onclick="game.handleKeyPress('s')">s</button>
+              <button onclick="game.handleKeyPress('d')">d</button>
+              <button onclick="game.handleKeyPress('f')">f</button>
+              <button onclick="game.handleKeyPress('g')">g</button>
+              <button onclick="game.handleKeyPress('h')">h</button>
+              <button onclick="game.handleKeyPress('j')">j</button>
+              <button onclick="game.handleKeyPress('k')">k</button>
+              <button onclick="game.handleKeyPress('l')">l</button>
               <div class="spacer half"></div>
             </div>
             <div class="keyboard-row ">
-              <button onclick="handleButtonPress('Enter')" class="one-and-a-half">Enter</button>
-              <button onclick="handleButtonPress('z')">z</button>
-              <button onclick="handleButtonPress('x')">x</button>
-              <button onclick="handleButtonPress('c')">c</button>
-              <button onclick="handleButtonPress('v')">v</button>
-              <button onclick="handleButtonPress('b')">b</button>
-              <button onclick="handleButtonPress('n')">n</button>
-              <button onclick="handleButtonPress('m')">m</button>
-              <button onclick="handleButtonPress('Backspace')" class="one-and-a-half">
+              <button onclick="game.handleKeyPress('Enter')" class="one-and-a-half">Enter</button>
+              <button onclick="game.handleKeyPress('z')">z</button>
+              <button onclick="game.handleKeyPress('x')">x</button>
+              <button onclick="game.handleKeyPress('c')">c</button>
+              <button onclick="game.handleKeyPress('v')">v</button>
+              <button onclick="game.handleKeyPress('b')">b</button>
+              <button onclick="game.handleKeyPress('n')">n</button>
+              <button onclick="game.handleKeyPress('m')">m</button>
+              <button onclick="game.handleKeyPress('Backspace')" class="one-and-a-half">
                 Back
               </button>
             </div>

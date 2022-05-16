@@ -1,102 +1,116 @@
-word = "mango";
-active = true;
+window.addEventListener("load", function () {
+  let game = new Game();
 
-addEvent(document, "keydown", function (e) {
-  e = e || window.event;
-  if (active) {
-    handleKeyPress(e.key);
+  addEvent(document, "keydown", function (e) {
+    e = e || window.event;
+    console.log(e);
+    if (game.active) {
+      game.handleKeyPress(e.key);
+    }
+  });
+
+  function addEvent(element, eventName, callback) {
+    if (element.addEventListener) {
+      element.addEventListener(eventName, callback, false);
+    } else if (element.attachEvent) {
+      element.attachEvent("on" + eventName, callback);
+    } else {
+      element["on" + eventName] = callback;
+    }
   }
 });
 
-function addEvent(element, eventName, callback) {
-  if (element.addEventListener) {
-    element.addEventListener(eventName, callback, false);
-  } else if (element.attachEvent) {
-    element.attachEvent("on" + eventName, callback);
-  } else {
-    element["on" + eventName] = callback;
+class Game {
+  constructor() {
+    this.word = "mango";
+    this.active = true;
+    this.board = document.getElementById("board");
+    this.rows = board.children;
+    this.activeRowNum = 0;
+    this.activeRow = board.children[0];
   }
-}
 
-function handleKeyPress(key) {
-  let activeRow = document.getElementsByClassName("active-row")[0];
-  let children = [...activeRow.children];
-  if (key === "Backspace") {
-    if (
-      children.find(function (x) {
-        return x.innerHTML !== "";
-      })
+  handleKeyPress(key) {
+    if (this.keyIsLetter(key)) {
+      let firstEmptyTile = this.getFirstEmptyTile();
+      if (firstEmptyTile) {
+        firstEmptyTile.innerHTML = key;
+      }
+    } else if (key === "Backspace") {
+      let lastFullTile = this.getLastFullTile();
+      if (lastFullTile) {
+        lastFullTile.innerHTML = "";
+      }
+    } else if (key === "Enter") {
+      if (this.getFirstEmptyTile()) {
+        alert("Need 5 letters");
+      } else {
+        this.handleAddRow();
+      }
+    }
+  }
+
+  handleAddRow() {
+    this.checkWord();
+
+    let enteredWord = this.getEnteredWord();
+    if (enteredWord === this.word) {
+      setTimeout(function () {
+        alert("Congratulations!");
+      }, 10);
+      this.active = false;
+    } else if (!this.activeRow.nextElementSibling) {
+      setTimeout(function () {
+        alert(this.word);
+      }, 10);
+      this.active = false;
+    }
+
+    this.setNextActiveRow();
+  }
+
+  checkWord() {
+    [...this.activeRow.children].forEach((x, index) => {
+      let currentLetter = x.innerHTML;
+      x.classList.remove("empty");
+      if (currentLetter === this.word[index]) {
+        x.classList.add("correct");
+      } else if (this.word.includes(currentLetter)) {
+        x.classList.add("present");
+      } else {
+        x.classList.add("absent");
+      }
+    });
+  }
+
+  getEnteredWord() {
+    return [...this.activeRow.children].reduce(function (
+      previousValue,
+      currentValue
     ) {
-      children[
-        children
-          .map(function (x) {
-            return x.innerHTML !== "";
-          })
-          .lastIndexOf(true)
-      ].innerHTML = "";
-    }
-  } else if (
-    children.find(function (x) {
+      return previousValue + currentValue.innerHTML;
+    },
+    "");
+  }
+
+  setNextActiveRow() {
+    this.activeRow = this.activeRow.nextElementSibling;
+  }
+
+  getLastFullTile() {
+    return [...this.activeRow.children].reverse().find(function (x) {
+      return x.innerHTML !== "";
+    });
+  }
+
+  getFirstEmptyTile() {
+    return [...this.activeRow.children].find(function (x) {
       return x.innerHTML === "";
-    })
-  ) {
-    if (key === "Enter") {
-      alert("Need 5 letters");
-    } else {
-      children.find((x) => x.innerHTML === "").innerHTML = key;
-    }
-  } else {
-    if (key === "Enter") {
-      handleAddRow(activeRow);
-      activeRow.classList.remove("active-row");
-    }
+    });
   }
-}
 
-function handleAddRow(activeRow) {
-  checkWord(activeRow);
-  let enteredWord = getEnteredWord(activeRow);
-  if (enteredWord === word) {
-    setTimeout(function () {
-      alert("Congratulations!");
-    }, 10);
-    active = false;
-  } else if (!activeRow.nextElementSibling) {
-    setTimeout(function () {
-      alert(word);
-    }, 10);
-  }
-  setNextActiveRow(activeRow);
-}
-
-function checkWord(activeRow) {
-  [...activeRow.children].forEach(function (x, index) {
-    let currentLetter = x.innerHTML;
-    x.classList.remove("empty");
-    if (currentLetter === word[index]) {
-      x.classList.add("correct");
-    } else if (word.includes(currentLetter)) {
-      x.classList.add("present");
-    } else {
-      x.classList.add("absent");
-    }
-  });
-}
-
-function getEnteredWord(activeRow) {
-  return [...activeRow.children].reduce(function (previousValue, currentValue) {
-    return previousValue + currentValue.innerHTML;
-  }, "");
-}
-
-function setNextActiveRow(activeRow) {
-  activeRow.nextElementSibling.classList.add("active-row");
-}
-
-function handleBackspace(activeRow) {}
-
-function handleButtonPress(letter) {
-  if (active) {
-    document.dispatchEvent(new KeyboardEvent("keydown", { key: letter }));
+  keyIsLetter(key) {
+    var letters = /^[A-Za-z]$/;
+    return key.match(letters);
   }
 }
