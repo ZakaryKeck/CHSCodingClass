@@ -1,9 +1,10 @@
+let game;
 window.addEventListener("load", function () {
-  let game = new Game();
+  game = new Game();
 
   addEvent(document, "keydown", function (e) {
     e = e || window.event;
-    console.log(e);
+
     if (game.active) {
       game.handleKeyPress(e.key);
     }
@@ -22,22 +23,21 @@ window.addEventListener("load", function () {
 
 class Game {
   constructor() {
-    this.word = "mango";
+    this.word = "vibey";
     this.active = true;
-    this.board = document.getElementById("board");
-    this.rows = board.children;
-    this.activeRowNum = 0;
-    this.activeRow = board.children[0];
+    this.activeRow = document.getElementById("board").children[0];
   }
 
   handleKeyPress(key) {
-    if (this.keyIsLetter(key)) {
+    if (this.isLetter(key)) {
       let firstEmptyTile = this.getFirstEmptyTile();
+
       if (firstEmptyTile) {
         firstEmptyTile.innerHTML = key;
       }
     } else if (key === "Backspace") {
       let lastFullTile = this.getLastFullTile();
+
       if (lastFullTile) {
         lastFullTile.innerHTML = "";
       }
@@ -45,31 +45,53 @@ class Game {
       if (this.getFirstEmptyTile()) {
         alert("Need 5 letters");
       } else {
-        this.handleAddRow();
+        this.addRow();
       }
     }
   }
 
-  handleAddRow() {
+  addRow() {
     this.checkWord();
-
-    let enteredWord = this.getEnteredWord();
-    if (enteredWord === this.word) {
-      setTimeout(function () {
-        alert("Congratulations!");
-      }, 10);
-      this.active = false;
-    } else if (!this.activeRow.nextElementSibling) {
-      setTimeout(function () {
-        alert(this.word);
-      }, 10);
-      this.active = false;
-    }
-
     this.setNextActiveRow();
   }
 
   checkWord() {
+    let guess = this.getEnteredWord();
+    let copy = this.word;
+
+    [...guess].forEach((currentLetter, index) => {
+      if (currentLetter === copy[index]) {
+        this.activeRow.children[index].classList.remove("empty");
+        this.activeRow.children[index].classList.add("correct");
+        guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+        copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
+      }
+    });
+
+    [...guess].forEach((currentLetter, index) => {
+      this.activeRow.children[index].classList.remove("empty");
+
+      if (currentLetter === "-") {
+        this.activeRow.children[index].classList.add("absent");
+      } else if (copy.includes(currentLetter)) {
+        this.activeRow.children[index].classList.add("present");
+        guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+        copy = copy.replace(currentLetter, "-");
+      } else {
+        this.activeRow.children[index].classList.add("absent");
+      }
+    });
+
+    if (this.getEnteredWord() === this.word) {
+      setTimeout(function () {
+        alert("Congratulations!");
+      }, 10);
+
+      this.active = false;
+    }
+  }
+
+  /*checkWord() {
     [...this.activeRow.children].forEach((x, index) => {
       let currentLetter = x.innerHTML;
       x.classList.remove("empty");
@@ -81,7 +103,19 @@ class Game {
         x.classList.add("absent");
       }
     });
-  }
+
+    let enteredWord = this.getEnteredWord();
+
+    if (enteredWord === this.word) {
+      setTimeout(function () {
+        alert("Congratulations!");
+      }, 10);
+
+      this.active = false;
+    }
+  }*/
+
+  isPresent(currentLetter, index) {}
 
   getEnteredWord() {
     return [...this.activeRow.children].reduce(function (
@@ -94,7 +128,15 @@ class Game {
   }
 
   setNextActiveRow() {
-    this.activeRow = this.activeRow.nextElementSibling;
+    if (!this.activeRow.nextElementSibling) {
+      setTimeout(() => {
+        alert(this.word);
+      }, 10);
+
+      this.active = false;
+    } else {
+      this.activeRow = this.activeRow.nextElementSibling;
+    }
   }
 
   getLastFullTile() {
@@ -109,8 +151,8 @@ class Game {
     });
   }
 
-  keyIsLetter(key) {
-    var letters = /^[A-Za-z]$/;
-    return key.match(letters);
+  isLetter(key) {
+    var letterRegex = /^[A-Za-z]$/;
+    return key.match(letterRegex);
   }
 }
