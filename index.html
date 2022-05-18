@@ -236,8 +236,34 @@ function draw() {
 
       <div id="Day2" class="tabcontent" style="display: none">
         <h2 style="text-align: center;">Wordle</h2>
-        If you're not familiar with Wordle, it's a game where you have 6 chances to guess a 5 letter word. Each letter
-        gives you some information in the form of a color, either green, gray, or yellow.
+        <p>Wordle a game where you have 6 chances to guess a 5 letter word. Each letter
+          gives you some information in the form of a color. Green means that you guessed
+          the letter in the correct spot, yellow means you guessed the letter in the incorrect
+          spot, and gray means the letter is not in the word.</p>
+
+        <p>Today we're going to be working together to remake wordle with basic web development.</p>
+
+        <p>Check out the starter code here: <a
+            href="https://codepen.io/zakkeck/pen/oNEBOBJ">https://codepen.io/zakkeck/pen/oNEBOBJ</a>
+        </p>
+
+        <p>As you can see in the CodePen there are three basic pieces to every website:
+        <ul>
+          <li>HTML - The information</li>
+          <li>Javascript - The code</li>
+          <li>and CSS - The style </li>
+        </ul>
+        </p>
+
+
+
+        <!-- <iframe height="800" style="width: 100%;" scrolling="no" title="Untitled"
+          src="https://codepen.io/zakkeck/embed/oNEBOBJ?default-tab=html%2Cresult" frameborder="no" loading="lazy"
+          allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/zakkeck/pen/oNEBOBJ">
+            Untitled</a> by Zak Keck (<a href="https://codepen.io/zakkeck">@zakkeck</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe> -->
 
         <h2 style="text-align: center;">Wordle</h2>
         <div id="game">
@@ -290,39 +316,39 @@ function draw() {
           </div>
           <div id="keyboard">
             <div class="keyboard-row ">
-              <button onclick="game.handleKeyPress('q')">q</button>
-              <button onclick="game.handleKeyPress('w')">w</button>
-              <button onclick="game.handleKeyPress('e')">e</button>
-              <button onclick="game.handleKeyPress('r')">r</button>
-              <button onclick="game.handleKeyPress('t')">t</button>
-              <button onclick="game.handleKeyPress('y')">y</button>
-              <button onclick="game.handleKeyPress('u')">u</button>
-              <button onclick="game.handleKeyPress('i')">i</button>
-              <button onclick="game.handleKeyPress('o')">o</button>
-              <button onclick="game.handleKeyPress('p')">p</button>
+              <button id="q" onclick="game.handleKeyPress('q')">q</button>
+              <button id="w" onclick="game.handleKeyPress('w')">w</button>
+              <button id="e" onclick="game.handleKeyPress('e')">e</button>
+              <button id="r" onclick="game.handleKeyPress('r')">r</button>
+              <button id="t" onclick="game.handleKeyPress('t')">t</button>
+              <button id="y" onclick="game.handleKeyPress('y')">y</button>
+              <button id="u" onclick="game.handleKeyPress('u')">u</button>
+              <button id="i" onclick="game.handleKeyPress('i')">i</button>
+              <button id="o" onclick="game.handleKeyPress('o')">o</button>
+              <button id="p" onclick="game.handleKeyPress('p')">p</button>
             </div>
             <div class="keyboard-row ">
               <div class="spacer half"></div>
-              <button onclick="game.handleKeyPress('a')">a</button>
-              <button onclick="game.handleKeyPress('s')">s</button>
-              <button onclick="game.handleKeyPress('d')">d</button>
-              <button onclick="game.handleKeyPress('f')">f</button>
-              <button onclick="game.handleKeyPress('g')">g</button>
-              <button onclick="game.handleKeyPress('h')">h</button>
-              <button onclick="game.handleKeyPress('j')">j</button>
-              <button onclick="game.handleKeyPress('k')">k</button>
-              <button onclick="game.handleKeyPress('l')">l</button>
+              <button id="a" onclick="game.handleKeyPress('a')">a</button>
+              <button id="s" onclick="game.handleKeyPress('s')">s</button>
+              <button id="d" onclick="game.handleKeyPress('d')">d</button>
+              <button id="f" onclick="game.handleKeyPress('f')">f</button>
+              <button id="g" onclick="game.handleKeyPress('g')">g</button>
+              <button id="h" onclick="game.handleKeyPress('h')">h</button>
+              <button id="j" onclick="game.handleKeyPress('j')">j</button>
+              <button id="k" onclick="game.handleKeyPress('k')">k</button>
+              <button id="l" onclick="game.handleKeyPress('l')">l</button>
               <div class="spacer half"></div>
             </div>
             <div class="keyboard-row ">
               <button onclick="game.handleKeyPress('Enter')" class="one-and-a-half">Enter</button>
-              <button onclick="game.handleKeyPress('z')">z</button>
-              <button onclick="game.handleKeyPress('x')">x</button>
-              <button onclick="game.handleKeyPress('c')">c</button>
-              <button onclick="game.handleKeyPress('v')">v</button>
-              <button onclick="game.handleKeyPress('b')">b</button>
-              <button onclick="game.handleKeyPress('n')">n</button>
-              <button onclick="game.handleKeyPress('m')">m</button>
+              <button id="z" onclick="game.handleKeyPress('z')">z</button>
+              <button id="x" onclick="game.handleKeyPress('x')">x</button>
+              <button id="c" onclick="game.handleKeyPress('c')">c</button>
+              <button id="v" onclick="game.handleKeyPress('v')">v</button>
+              <button id="b" onclick="game.handleKeyPress('b')">b</button>
+              <button id="n" onclick="game.handleKeyPress('n')">n</button>
+              <button id="m" onclick="game.handleKeyPress('m')">m</button>
               <button onclick="game.handleKeyPress('Backspace')" class="one-and-a-half">
                 Back
               </button>

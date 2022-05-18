@@ -23,7 +23,7 @@ window.addEventListener("load", function () {
 
 class Game {
   constructor() {
-    this.word = "vibey";
+    this.word = "books";
     this.active = true;
     this.activeRow = document.getElementById("board").children[0];
   }
@@ -60,16 +60,21 @@ class Game {
     let copy = this.word;
 
     [...guess].forEach((currentLetter, index) => {
+      let keyboardLetter = document.getElementById(currentLetter);
+
       if (currentLetter === copy[index]) {
         this.activeRow.children[index].classList.remove("empty");
         this.activeRow.children[index].classList.add("correct");
         guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
         copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
+        keyboardLetter.classList.remove("present");
+        keyboardLetter.classList.add("correct");
       }
     });
 
     [...guess].forEach((currentLetter, index) => {
       this.activeRow.children[index].classList.remove("empty");
+      let keyboardLetter = document.getElementById(currentLetter);
 
       if (currentLetter === "-") {
         this.activeRow.children[index].classList.add("absent");
@@ -77,8 +82,10 @@ class Game {
         this.activeRow.children[index].classList.add("present");
         guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
         copy = copy.replace(currentLetter, "-");
+        keyboardLetter.classList.add("present");
       } else {
         this.activeRow.children[index].classList.add("absent");
+        keyboardLetter.classList.add("absent");
       }
     });
 
@@ -91,31 +98,29 @@ class Game {
     }
   }
 
-  /*checkWord() {
-    [...this.activeRow.children].forEach((x, index) => {
-      let currentLetter = x.innerHTML;
-      x.classList.remove("empty");
-      if (currentLetter === this.word[index]) {
-        x.classList.add("correct");
-      } else if (this.word.includes(currentLetter)) {
-        x.classList.add("present");
-      } else {
-        x.classList.add("absent");
-      }
-    });
+  // checkWord() {
+  //   [...this.activeRow.children].forEach((x, index) => {
+  //     let currentLetter = x.innerHTML;
+  //     x.classList.remove("empty");
+  //     if (currentLetter === this.word[index]) {
+  //       x.classList.add("correct");
+  //     } else if (this.word.includes(currentLetter)) {
+  //       x.classList.add("present");
+  //     } else {
+  //       x.classList.add("absent");
+  //     }
+  //   });
 
-    let enteredWord = this.getEnteredWord();
+  //   let enteredWord = this.getEnteredWord();
 
-    if (enteredWord === this.word) {
-      setTimeout(function () {
-        alert("Congratulations!");
-      }, 10);
+  //   if (enteredWord === this.word) {
+  //     setTimeout(function () {
+  //       alert("Congratulations!");
+  //     }, 10);
 
-      this.active = false;
-    }
-  }*/
-
-  isPresent(currentLetter, index) {}
+  //     this.active = false;
+  //   }
+  // }
 
   getEnteredWord() {
     return [...this.activeRow.children].reduce(function (
