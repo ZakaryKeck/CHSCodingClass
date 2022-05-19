@@ -38,7 +38,7 @@
 
     <div class="loader" style="margin: auto;"></div>
     <div>
-      <!-- <div id="Day1" class="tabcontent" style="display: none">
+      <div id="Day1" class="tabcontent" style="display: none">
         <div>
           <iframe
             src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211738&amp;authkey=AA5f5Q1VI9Yt5aE&amp;em=2&amp;wdAr=1.7777777777777777"
@@ -232,39 +232,9 @@ function draw() {
             <li>Create an entirely new project together. Any ideas?</li>
           </ul>
           </p>
-      </div> -->
+      </div>
 
       <div id="Day2" class="tabcontent" style="display: none">
-        <h2 style="text-align: center;">Wordle</h2>
-        <p>Wordle a game where you have 6 chances to guess a 5 letter word. Each letter
-          gives you some information in the form of a color. Green means that you guessed
-          the letter in the correct spot, yellow means you guessed the letter in the incorrect
-          spot, and gray means the letter is not in the word.</p>
-
-        <p>Today we're going to be working together to remake wordle with basic web development.</p>
-
-        <p>Check out the starter code here: <a
-            href="https://codepen.io/zakkeck/pen/oNEBOBJ">https://codepen.io/zakkeck/pen/oNEBOBJ</a>
-        </p>
-
-        <p>As you can see in the CodePen there are three basic pieces to every website:
-        <ul>
-          <li>HTML - The information</li>
-          <li>Javascript - The code</li>
-          <li>and CSS - The style </li>
-        </ul>
-        </p>
-
-
-
-        <!-- <iframe height="800" style="width: 100%;" scrolling="no" title="Untitled"
-          src="https://codepen.io/zakkeck/embed/oNEBOBJ?default-tab=html%2Cresult" frameborder="no" loading="lazy"
-          allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/zakkeck/pen/oNEBOBJ">
-            Untitled</a> by Zak Keck (<a href="https://codepen.io/zakkeck">@zakkeck</a>)
-          on <a href="https://codepen.io">CodePen</a>.
-        </iframe> -->
-
         <h2 style="text-align: center;">Wordle</h2>
         <div id="game">
           <div id="board-container">
@@ -355,6 +325,147 @@ function draw() {
             </div>
           </div>
         </div>
+        <p>Wordle a game where you have 6 chances to guess a 5 letter word. Each letter
+          gives you some information in the form of a color. Green means that you guessed
+          the letter in the correct spot, yellow means you guessed the letter in the incorrect
+          spot, and gray means the letter is not in the word.</p>
+
+        <p>Today we're going to be working together to remake wordle with basic web development.</p>
+
+        <p>Open up CodePen here: <a href="https://codepen.io/pen/">https://codepen.io/pen/</a></p>
+
+        <p>As you can see in the CodePen there are three basic pieces to every website:
+        <ul>
+          <li>HTML - The Structure</li>
+          <li>Javascript - The Code</li>
+          <li>and CSS - The Style </li>
+        </ul>
+        </p>
+
+        <p>Let's <b>start by copy pasting this into the HTML section</b>:</p>
+        <div><code>&lt;div&gt;Hello, World!&lt;/div&gt;</code></div>
+        <p>
+          <code>div</code>
+          is an html element that stands for division. All HTML elements have an opening tag: <code>&lt;div&gt;</code>,
+          and a closing tag <code>&lt;/div&gt;</code> that that surround its innerHTML.
+        </p>
+
+        <p>Now let's add some style to our div. <b>Copy past this into the CSS section.</b></p>
+        <div><code>.awesome-div{ color: red;}</code></div>
+        <p><b>And replace our div in the html section with this:</b>
+        <div><code>&lt;div class="awesome-div"&gt;Hello, World!&lt;/div&gt;</code></div>
+        </p>
+
+        <p>Color is an attribute that will change the color of the text! Now let's add some code.
+          <b>Copy paste this into the JS section:</b>
+        <pre class="highlight">
+    function showMessage() {
+      alert("You clicked on a div!");
+    }</pre>
+        </p>
+
+        <p><b>And replace our div with this:</b></p>
+        <div><code>&lt;div class="awesome-div" onclick="showMessage()"&gt;Hello, World!&lt;/div&gt;</code></div>
+
+        <p>Sweet! When you click on the div, our message shows up. There are a few pieces to talk about here.
+          <code>onclick is an attribute that you can put on html elements. The value of the attribute is a function 
+            that is called when you click on the element. <code>alert()</code> is a function that is built in to web
+          browers and shows the dialogue box. You've probably seen it before!
+          </code>
+        </p>
+
+        <p>Now check out the starter code here: <a
+            href="https://codepen.io/zakkeck/pen/oNEBOBJ">https://codepen.io/zakkeck/pen/oNEBOBJ</a> You don't have to
+          save the first Code Pen.
+        </p>
+
+        <p>We have one tile of Wordle! Not very fun to play if you ask me. </p>
+
+        <p>Let's look at the HTML. We have a Header <code>h2</code>. Then we have a lot of divs.
+          <code>id</code> is a property that gives you a way to accesss HTML Elements, like its name. So, we have
+          divs named "game", "board-container", and "board". It makes sense to name them because we will have only 1 of
+          each.
+          On the other hand, we have two more divs with classes. These classes say that the the first div is a
+          "board-row" and the "active-row".
+          The next div is a "tile" and it is "empty"
+        </p>
+        <p><b>Add 4 more tiles.</b> You will need to copy paste the tile div.</p>
+        <p><b>Now add 5 more rows.</b> Now your wordle board is complete!</p>
+
+        <p>Now let's check out the styles. In the CSS section, each ".class" shows what styles are applied to an html
+          element with that
+          class name. Find the <code>.empty</code> class, and take a look at the background-color. Try changing it to
+          something else
+          from this list <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
+            target="blank">https://www.w3.org/wiki/CSS/Properties/color/keywords</a> </p>
+
+        <b>Change the background colors for <code></code></b>
+
+        <p>Now let's work on the JS functions together. I'll include the finished version after each section, but try
+          to type it out as we go through it together. You can copy paste at the end if you get stuck
+        </p>
+        <ul>
+          <li><code>handleKeyPress</code></li>
+          <li><code>checkWord</code></li>
+        </ul>
+        <p>Next steps: add keyboard</p>
+        <!-- 
+        <p>Work with chrome dev tools</p> -->
+
+        <pre class="highlight">
+  &lt;&#100;&#105;&#118;&#32;&#105;&#100;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&quot;&gt;
+&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#113;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#113;&apos;&rpar;&quot;&gt;&#113;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#119;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#119;&apos;&rpar;&quot;&gt;&#119;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#101;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#101;&apos;&rpar;&quot;&gt;&#101;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#114;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#114;&apos;&rpar;&quot;&gt;&#114;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#116;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#116;&apos;&rpar;&quot;&gt;&#116;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#121;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#121;&apos;&rpar;&quot;&gt;&#121;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#117;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#117;&apos;&rpar;&quot;&gt;&#117;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#105;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#105;&apos;&rpar;&quot;&gt;&#105;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#111;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#111;&apos;&rpar;&quot;&gt;&#111;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#112;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#112;&apos;&rpar;&quot;&gt;&#112;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#115;&#112;&#97;&#99;&#101;&#114;&#32;&#104;&#97;&#108;&#102;&quot;&gt;&lt;&sol;&#100;&#105;&#118;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#97;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#97;&apos;&rpar;&quot;&gt;&#97;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#115;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#115;&apos;&rpar;&quot;&gt;&#115;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#100;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#100;&apos;&rpar;&quot;&gt;&#100;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#102;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#102;&apos;&rpar;&quot;&gt;&#102;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#103;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#103;&apos;&rpar;&quot;&gt;&#103;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#104;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#104;&apos;&rpar;&quot;&gt;&#104;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#106;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#106;&apos;&rpar;&quot;&gt;&#106;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#107;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#107;&apos;&rpar;&quot;&gt;&#107;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#108;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#108;&apos;&rpar;&quot;&gt;&#108;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#115;&#112;&#97;&#99;&#101;&#114;&#32;&#104;&#97;&#108;&#102;&quot;&gt;&lt;&sol;&#100;&#105;&#118;&gt;
+&#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#69;&#110;&#116;&#101;&#114;&apos;&rpar;&quot;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#111;&#110;&#101;&#45;&#97;&#110;&#100;&#45;&#97;&#45;&#104;&#97;&#108;&#102;&quot;&gt;&#69;&#110;&#116;&#101;&#114;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#122;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#122;&apos;&rpar;&quot;&gt;&#122;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#120;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#120;&apos;&rpar;&quot;&gt;&#120;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#99;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#99;&apos;&rpar;&quot;&gt;&#99;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#118;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#118;&apos;&rpar;&quot;&gt;&#118;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#98;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#98;&apos;&rpar;&quot;&gt;&#98;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#110;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#110;&apos;&rpar;&quot;&gt;&#110;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#109;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#109;&apos;&rpar;&quot;&gt;&#109;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#66;&#97;&#99;&#107;&#115;&#112;&#97;&#99;&#101;&apos;&rpar;&quot;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#111;&#110;&#101;&#45;&#97;&#110;&#100;&#45;&#97;&#45;&#104;&#97;&#108;&#102;&quot;&gt;
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#66;&#97;&#99;&#107;
+&#32;&#32;&#32;&#32;&#32;&#32;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+&#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+</pre>
+
+
+
+        <!-- <iframe height="800" style="width: 100%;" scrolling="no" title="Untitled"
+          src="https://codepen.io/zakkeck/embed/oNEBOBJ?default-tab=html%2Cresult" frameborder="no" loading="lazy"
+          allowtransparency="true" allowfullscreen="true">
+          See the Pen <a href="https://codepen.io/zakkeck/pen/oNEBOBJ">
+            Untitled</a> by Zak Keck (<a href="https://codepen.io/zakkeck">@zakkeck</a>)
+          on <a href="https://codepen.io">CodePen</a>.
+        </iframe> -->
+
+
       </div>
 
       <div id="Day3" class="tabcontent" style="display: none">
@@ -407,5 +518,5 @@ function draw() {
 
           <span class="p">[</span><span class="nv">Link</span><span class="p">](</span><span class="sx">url</span><span class="p">)</span> and !<span class="p">[</span><span class="nv">Image</span><span class="p">](</span><span class="sx">src</span><span class="p">)</span>
           </code></pre>
-        </div>
-      </div> -->
+      </div>
+    </div> -->
