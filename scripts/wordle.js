@@ -23,7 +23,7 @@ window.addEventListener("load", function () {
 
 class Game {
   constructor() {
-    this.word = "books";
+    this.word = "digit";
     this.active = true;
     this.activeRow = document.getElementById("board").children[0];
   }

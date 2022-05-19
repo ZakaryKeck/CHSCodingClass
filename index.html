@@ -235,6 +235,11 @@ function draw() {
       </div>
 
       <div id="Day2" class="tabcontent" style="display: none">
+        <iframe
+          src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211776&amp;authkey=AN9T64QlmHVjDGA&amp;em=2&amp;wdAr=1.7777777777777777"
+          width="100%" height="400px" frameborder="0">This is an embedded <a target="_blank"
+            href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank"
+            href="https://office.com/webapps">Office</a>.</iframe>
         <h2 style="text-align: center;">Wordle</h2>
         <div id="game">
           <div id="board-container">
@@ -325,7 +330,7 @@ function draw() {
             </div>
           </div>
         </div>
-        <p>Wordle a game where you have 6 chances to guess a 5 letter word. Each letter
+        <p>Wordle is a game where you have 6 chances to guess a 5 letter word. Each letter
           gives you some information in the form of a color. Green means that you guessed
           the letter in the correct spot, yellow means you guessed the letter in the incorrect
           spot, and gray means the letter is not in the word.</p>
@@ -337,8 +342,8 @@ function draw() {
         <p>As you can see in the CodePen there are three basic pieces to every website:
         <ul>
           <li>HTML - The Structure</li>
+          <li>CSS - The Style </li>
           <li>Javascript - The Code</li>
-          <li>and CSS - The Style </li>
         </ul>
         </p>
 
@@ -347,7 +352,7 @@ function draw() {
         <p>
           <code>div</code>
           is an html element that stands for division. All HTML elements have an opening tag: <code>&lt;div&gt;</code>,
-          and a closing tag <code>&lt;/div&gt;</code> that that surround its innerHTML.
+          and a closing tag <code>&lt;/div&gt;</code> that surround its innerHTML.
         </p>
 
         <p>Now let's add some style to our div. <b>Copy past this into the CSS section.</b></p>
@@ -368,9 +373,9 @@ function draw() {
         <div><code>&lt;div class="awesome-div" onclick="showMessage()"&gt;Hello, World!&lt;/div&gt;</code></div>
 
         <p>Sweet! When you click on the div, our message shows up. There are a few pieces to talk about here.
-          <code>onclick is an attribute that you can put on html elements. The value of the attribute is a function 
-            that is called when you click on the element. <code>alert()</code> is a function that is built in to web
-          browers and shows the dialogue box. You've probably seen it before!
+          <code>onclick</code> is an attribute that you can put on html elements. The value of the attribute is a
+          function that is called when you click on the element. <code>alert()</code> is a function that is built
+          in to web browers and shows the dialogue box. You've probably seen it before!
           </code>
         </p>
 
@@ -399,16 +404,146 @@ function draw() {
           from this list <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
             target="blank">https://www.w3.org/wiki/CSS/Properties/color/keywords</a> </p>
 
-        <b>Change the background colors for <code></code></b>
+        <p>Now, there are 4 basic states that a tile can be in. What are they? Let's add a CSS class for each missing
+          one.</p>
 
-        <p>Now let's work on the JS functions together. I'll include the finished version after each section, but try
+        <pre>
+.absent {
+  background-color: ;
+  color: ;
+}
+
+.correct {
+  background-color: ;
+  color: ;
+}
+
+.present {
+  background-color: ;
+  color: ;
+}
+        </pre>
+
+        <p><b>Set the colors for each one.</b></p>
+
+        <p>Now let's work on the JS functions together. You may notice some weird code at the top of the JS section in
+          Code Pen.
+          <code>window.addEventListener</code> is
+          a browser function that allows us to get the key that is pressed by the user.
+        </p>
+
+        <p>I'll include the finished version after each section, but try
           to type it out as we go through it together. You can copy paste at the end if you get stuck
         </p>
         <ul>
           <li><code>handleKeyPress</code></li>
           <li><code>checkWord</code></li>
         </ul>
-        <p>Next steps: add keyboard</p>
+
+        <pre>
+handleKeyPress(key) {
+  if (this.isLetter(key)) {
+    let firstEmptyTile = this.getFirstEmptyTile();
+
+    if (firstEmptyTile) {
+      firstEmptyTile.innerHTML = key;
+    }
+  } else if (key === "Backspace") {
+    let lastFullTile = this.getLastFullTile();
+
+    if (lastFullTile) {
+      lastFullTile.innerHTML = "";
+    }
+  } else if (key === "Enter") {
+    if (this.getFirstEmptyTile()) {
+      alert("Need 5 letters");
+    } else if (data.includes(this.getEnteredWord())) {
+      this.addRow();
+    } else {
+      alert("Not a word in list");
+    }
+  }
+}
+        </pre>
+
+        Here is a version with a slight bug. <b>Paste it into the Code Pen and let's see if we can find and fix it.</b>
+        <pre>
+checkWord() {
+  [...this.activeRow.children].forEach((x, index) => {
+    let currentLetter = x.innerHTML;
+    x.classList.remove("empty");
+    if (currentLetter === this.word[index]) {
+      x.classList.add("correct");
+    } else if (this.word.includes(currentLetter)) {
+      x.classList.add("present");
+    } else {
+      x.classList.add("absent");
+    }
+  });
+
+  let enteredWord = this.getEnteredWord();
+
+  if (enteredWord === this.word) {
+    setTimeout(function () {
+      alert("Congratulations!");
+    }, 10);
+
+    this.active = false;
+  }
+}
+        </pre>
+
+        <p>Here's the working version.</p>
+        <pre>
+checkWord() {
+  let guess = this.getEnteredWord();
+  let copy = this.word;
+
+  [...guess].forEach((currentLetter, index) => {
+    let keyboardLetter = document.getElementById(currentLetter);
+
+    if (currentLetter === copy[index]) {
+      this.activeRow.children[index].classList.remove("empty");
+      this.activeRow.children[index].classList.add("correct");
+      guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+      copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
+      keyboardLetter.classList.remove("present");
+      keyboardLetter.classList.add("correct");
+    }
+  });
+
+  [...guess].forEach((currentLetter, index) => {
+    this.activeRow.children[index].classList.remove("empty");
+    let keyboardLetter = document.getElementById(currentLetter);
+
+    if (currentLetter === "-") {
+      this.activeRow.children[index].classList.add("absent");
+    } else if (copy.includes(currentLetter)) {
+      this.activeRow.children[index].classList.add("present");
+      guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+      copy = copy.replace(currentLetter, "-");
+      keyboardLetter.classList.add("present");
+    } else {
+      this.activeRow.children[index].classList.add("absent");
+      keyboardLetter.classList.add("absent");
+    }
+  });
+
+  if (this.getEnteredWord() === this.word) {
+    setTimeout(function () {
+      alert("Congratulations!");
+    }, 10);
+
+    this.active = false;
+  }
+}
+        </pre>
+        <p>Next steps: Add the keyboard. Each letter will be a button with an id and an onclick event. The id allows us
+          to
+          use <code>document.getElementById</code> to change the class on the buttons, so we can show if they are
+          correct,
+          absent, or present.
+        </p>
         <!-- 
         <p>Work with chrome dev tools</p> -->
 
@@ -455,8 +590,6 @@ function draw() {
 &#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
 </pre>
 
-
-
         <!-- <iframe height="800" style="width: 100%;" scrolling="no" title="Untitled"
           src="https://codepen.io/zakkeck/embed/oNEBOBJ?default-tab=html%2Cresult" frameborder="no" loading="lazy"
           allowtransparency="true" allowfullscreen="true">
@@ -465,6 +598,7 @@ function draw() {
           on <a href="https://codepen.io">CodePen</a>.
         </iframe> -->
 
+        <p>And that's finished Wordle! What are some ways we can make it our own?</p>
 
       </div>
 
