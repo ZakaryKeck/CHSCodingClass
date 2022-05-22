@@ -67,7 +67,7 @@ class Game {
     } else if (key === "Enter") {
       if (this.getFirstEmptyTile()) {
         alert("Need 5 letters");
-      } else if (true /*data.includes(this.getEnteredWord())*/) {
+      } else if (possibleWords.includes(this.getEnteredWord())) {
         this.checkWord();
       } else {
         alert("Not a word in list");
