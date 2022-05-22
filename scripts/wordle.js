@@ -41,9 +41,9 @@ class Game {
         tile.innerHTML = "";
       });
     });
+
     [...document.getElementById("keyboard").children].forEach((row) => {
       [...row.children].forEach((key) => {
-        console.log(key.className);
         if (key.className !== "one-and-a-half") {
           key.className = "";
         }
@@ -77,19 +77,16 @@ class Game {
 
   checkWord() {
     let guess = this.getEnteredWord();
-    let copy = this.word;
+    let answer = this.word;
+    let tileStates = [];
+    let letterStates = {};
 
     [...guess].forEach((currentLetter, index) => {
-      let currentTile = this.activeRow.children[index];
-      let keyboardLetter = document.getElementById(currentLetter);
-
-      if (currentLetter === copy[index]) {
-        this.addClass(currentTile, "empty");
-        this.addClass(currentTile, "correct");
+      if (currentLetter === answer[index]) {
+        tileStates[index] = "correct";
+        letterStates[currentLetter] = "correct";
         guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
-        copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
-        this.removeClass(keyboardLetter, "present");
-        this.addClass(keyboardLetter, "correct");
+        answer = answer.substring(0, index) + "-" + answer.substring(index + 1);
       }
       // console.log("First----------------------");
       // console.log(copy);
@@ -97,39 +94,67 @@ class Game {
     });
 
     [...guess].forEach((currentLetter, index) => {
-      let currentTile = this.activeRow.children[index];
-      let keyboardLetter = document.getElementById(currentLetter);
-
-      this.removeClass(currentTile, "empty");
-
       if (currentLetter === "-") {
-        this.addClass(currentTile, "absent");
-      } else if (copy.includes(currentLetter)) {
-        this.addClass(currentTile, "present");
-
-        guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
-        copy = copy.replace(currentLetter, "-");
-        this.addClass(keyboardLetter, "present");
+        //Do nothing
+      } else if (answer.includes(currentLetter)) {
+        answer = answer.replace(currentLetter, "-");
+        letterStates[currentLetter] = "present";
+        tileStates[index] = "present";
       } else {
-        this.addClass(currentTile, "absent");
-        this.addClass(keyboardLetter, "absent");
+        if (tileStates[index] !== "correct") {
+          tileStates[index] = "absent";
+        }
+        if (letterStates[currentLetter] !== "correct") {
+          letterStates[currentLetter] = "absent";
+        }
       }
       // console.log("Second----------------------");
       // console.log(copy);
       // console.log(guess);
     });
 
-    if (this.getEnteredWord() === this.word) {
-      setTimeout(function () {
-        alert("Congratulations!");
-      }, 10);
+    this.activeRow.children[0].classList.add("spin");
+    this.animateLetters(this.activeRow.children[0], tileStates, letterStates);
+  }
 
-      this.active = false;
-    }
+  animateLetters(child, tileStates, letterStates) {
+    setTimeout(() => {
+      this.removeClass(child, "empty");
+      this.addClass(child, tileStates[0]);
 
-    if (this.active) {
-      this.setNextActiveRow();
-    }
+      if (child.nextElementSibling) {
+        this.addClass(child.nextElementSibling, "spin");
+        this.animateLetters(
+          child.nextElementSibling,
+          tileStates.slice(1),
+          letterStates
+        );
+      } else {
+        for (const [letter, className] of Object.entries(letterStates)) {
+          let element = document.getElementById(letter);
+          if (className === "correct") {
+            this.removeClass(element, "present");
+          }
+
+          this.addClass(element, className);
+        }
+        if (this.getEnteredWord() === this.word) {
+          this.setScoreInfo(true);
+          let scoreInfo = this.getScoreInfo();
+          setTimeout(function () {
+            alert(
+              `Congratulations! Wins: ${scoreInfo.wins}. Current Streak: ${scoreInfo.currentStreak}`
+            );
+          }, 100);
+
+          this.active = false;
+        }
+
+        if (this.active) {
+          this.setNextActiveRow();
+        }
+      }
+    }, 300);
   }
 
   // checkWord() {
@@ -168,8 +193,14 @@ class Game {
 
   setNextActiveRow() {
     if (!this.activeRow.nextElementSibling) {
+      this.setScoreInfo(false);
+      let scoreInfo = this.getScoreInfo();
       setTimeout(() => {
-        alert(this.word);
+        alert(
+          `${this.word.toUpperCase()}. Wins: ${
+            scoreInfo.wins
+          }. CurrentStreak: ${scoreInfo.currentStreak}`
+        );
       }, 10);
 
       this.active = false;
@@ -201,6 +232,24 @@ class Game {
 
   removeClass(element, className) {
     element.classList.remove(className);
+  }
+
+  getScoreInfo() {
+    return JSON.parse(localStorage.getItem("scoreInfo"));
+  }
+
+  setScoreInfo(win) {
+    let oldScoreInfo = this.getScoreInfo();
+    let wins = oldScoreInfo?.wins ?? 0;
+    let currentStreak = oldScoreInfo?.currentStreak ?? 0;
+    if (win) {
+      wins++;
+      currentStreak++;
+    } else {
+      currentStreak = 0;
+    }
+
+    localStorage.setItem("scoreInfo", JSON.stringify({ wins, currentStreak }));
   }
 }
 

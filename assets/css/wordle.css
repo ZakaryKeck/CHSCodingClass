@@ -102,3 +102,21 @@ button {
   margin: 0 auto 8px;
   touch-action: manipulation;
 }
+
+.tile.spin {
+  animation-name: FlipIn;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
+  animation-delay: 0ms;
+}
+@keyframes FlipIn {
+  0% {
+    transform: rotateX(0);
+  }
+  50% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
