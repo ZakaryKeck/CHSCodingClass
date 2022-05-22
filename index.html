@@ -303,7 +303,6 @@ function draw() {
               <button id="p" onclick="game.handleKeyPress('p')">p</button>
             </div>
             <div class="keyboard-row ">
-              <div class="spacer half"></div>
               <button id="a" onclick="game.handleKeyPress('a')">a</button>
               <button id="s" onclick="game.handleKeyPress('s')">s</button>
               <button id="d" onclick="game.handleKeyPress('d')">d</button>
@@ -313,7 +312,6 @@ function draw() {
               <button id="j" onclick="game.handleKeyPress('j')">j</button>
               <button id="k" onclick="game.handleKeyPress('k')">k</button>
               <button id="l" onclick="game.handleKeyPress('l')">l</button>
-              <div class="spacer half"></div>
             </div>
             <div class="keyboard-row ">
               <button onclick="game.handleKeyPress('Enter')" class="one-and-a-half">Enter</button>
@@ -324,10 +322,11 @@ function draw() {
               <button id="b" onclick="game.handleKeyPress('b')">b</button>
               <button id="n" onclick="game.handleKeyPress('n')">n</button>
               <button id="m" onclick="game.handleKeyPress('m')">m</button>
-              <button onclick="game.handleKeyPress('Backspace')" class="one-and-a-half">
+              <button id="newGame" onclick="game.handleKeyPress('Backspace')" class="one-and-a-half">
                 Back
               </button>
             </div>
+            <button onclick="game.newGame()" style="margin: auto; font-size: 12px; padding: 5px">New Game</button>
           </div>
         </div>
         <p>Wordle is a game where you have 6 chances to guess a 5 letter word. Each letter

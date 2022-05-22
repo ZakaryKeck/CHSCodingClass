@@ -8,6 +8,7 @@ window.addEventListener("load", function () {
     if (game.active) {
       game.handleKeyPress(e.key);
     }
+    e.target.blur();
   });
 
   function addEvent(element, eventName, callback) {
@@ -23,9 +24,31 @@ window.addEventListener("load", function () {
 
 class Game {
   constructor() {
-    this.word = "digit";
+    this.word =
+      possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)];
     this.active = true;
     this.activeRow = document.getElementById("board").children[0];
+  }
+
+  newGame() {
+    this.active = true;
+    this.word =
+      possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)];
+    this.activeRow = document.getElementById("board").children[0];
+    [...document.getElementById("board").children].forEach((row) => {
+      [...row.children].forEach((tile) => {
+        tile.className = "tile empty";
+        tile.innerHTML = "";
+      });
+    });
+    [...document.getElementById("keyboard").children].forEach((row) => {
+      [...row.children].forEach((key) => {
+        console.log(key.className);
+        if (key.className !== "one-and-a-half") {
+          key.className = "";
+        }
+      });
+    });
   }
 
   handleKeyPress(key) {
@@ -44,17 +67,12 @@ class Game {
     } else if (key === "Enter") {
       if (this.getFirstEmptyTile()) {
         alert("Need 5 letters");
-      } else if (data.includes(this.getEnteredWord())) {
-        this.addRow();
+      } else if (true /*data.includes(this.getEnteredWord())*/) {
+        this.checkWord();
       } else {
         alert("Not a word in list");
       }
     }
-  }
-
-  addRow() {
-    this.checkWord();
-    this.setNextActiveRow();
   }
 
   checkWord() {
@@ -62,33 +80,43 @@ class Game {
     let copy = this.word;
 
     [...guess].forEach((currentLetter, index) => {
+      let currentTile = this.activeRow.children[index];
       let keyboardLetter = document.getElementById(currentLetter);
 
       if (currentLetter === copy[index]) {
-        this.activeRow.children[index].classList.remove("empty");
-        this.activeRow.children[index].classList.add("correct");
+        this.addClass(currentTile, "empty");
+        this.addClass(currentTile, "correct");
         guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
         copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
-        keyboardLetter.classList.remove("present");
-        keyboardLetter.classList.add("correct");
+        this.removeClass(keyboardLetter, "present");
+        this.addClass(keyboardLetter, "correct");
       }
+      // console.log("First----------------------");
+      // console.log(copy);
+      // console.log(guess);
     });
 
     [...guess].forEach((currentLetter, index) => {
-      this.activeRow.children[index].classList.remove("empty");
+      let currentTile = this.activeRow.children[index];
       let keyboardLetter = document.getElementById(currentLetter);
 
+      this.removeClass(currentTile, "empty");
+
       if (currentLetter === "-") {
-        this.activeRow.children[index].classList.add("absent");
+        this.addClass(currentTile, "absent");
       } else if (copy.includes(currentLetter)) {
-        this.activeRow.children[index].classList.add("present");
+        this.addClass(currentTile, "present");
+
         guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
         copy = copy.replace(currentLetter, "-");
-        keyboardLetter.classList.add("present");
+        this.addClass(keyboardLetter, "present");
       } else {
-        this.activeRow.children[index].classList.add("absent");
-        keyboardLetter.classList.add("absent");
+        this.addClass(currentTile, "absent");
+        this.addClass(keyboardLetter, "absent");
       }
+      // console.log("Second----------------------");
+      // console.log(copy);
+      // console.log(guess);
     });
 
     if (this.getEnteredWord() === this.word) {
@@ -97,6 +125,10 @@ class Game {
       }, 10);
 
       this.active = false;
+    }
+
+    if (this.active) {
+      this.setNextActiveRow();
     }
   }
 
@@ -162,9 +194,359 @@ class Game {
     var letterRegex = /^[A-Za-z]$/;
     return key.match(letterRegex);
   }
+
+  addClass(element, className) {
+    element.classList.add(className);
+  }
+
+  removeClass(element, className) {
+    element.classList.remove(className);
+  }
 }
 
-const data = [
+const possibleAnswers = [
+  "scrap",
+  "gamer",
+  "glass",
+  "scour",
+  "being",
+  "delve",
+  "yield",
+  "metal",
+  "tipsy",
+  "slung",
+  "farce",
+  "gecko",
+  "butch",
+  "shine",
+  "fetus",
+  "canny",
+  "midst",
+  "badge",
+  "homer",
+  "train",
+  "hairy",
+  "story",
+  "forgo",
+  "larva",
+  "trash",
+  "zesty",
+  "shown",
+  "heist",
+  "askew",
+  "olive",
+  "plant",
+  "oxide",
+  "cargo",
+  "foyer",
+  "flair",
+  "ample",
+  "cheek",
+  "shame",
+  "mince",
+  "chunk",
+  "royal",
+  "squad",
+  "black",
+  "stair",
+  "scare",
+  "foray",
+  "comma",
+  "natal",
+  "shawl",
+  "fewer",
+  "trope",
+  "snout",
+  "lowly",
+  "stove",
+  "harry",
+  "shall",
+  "found",
+  "nymph",
+  "epoxy",
+  "depot",
+  "chest",
+  "purge",
+  "slosh",
+  "their",
+  "renew",
+  "allow",
+  "saute",
+  "movie",
+  "cater",
+  "tease",
+  "smelt",
+  "focus",
+  "today",
+  "watch",
+  "lapse",
+  "month",
+  "sweet",
+  "hoard",
+  "cloth",
+  "brine",
+  "ahead",
+  "mourn",
+  "nasty",
+  "rupee",
+  "choke",
+  "chant",
+  "spill",
+  "vivid",
+  "bloke",
+  "trove",
+  "thorn",
+  "other",
+  "tacit",
+  "swill",
+  "dodge",
+  "shake",
+  "caulk",
+  "aroma",
+  "cynic",
+  "robin",
+  "ultra",
+  "ulcer",
+  "pause",
+  "humor",
+  "frame",
+  "elder",
+  "skill",
+  "aloft",
+  "pleat",
+  "shard",
+  "moist",
+  "those",
+  "light",
+  "wrung",
+  "could",
+  "perky",
+  "mount",
+  "whack",
+  "sugar",
+  "knoll",
+  "crimp",
+  "wince",
+  "prick",
+  "robot",
+  "point",
+  "proxy",
+  "shire",
+  "solar",
+  "panic",
+  "tangy",
+  "abbey",
+  "favor",
+  "drink",
+  "query",
+  "gorge",
+  "crank",
+  "slump",
+  "banal",
+  "tiger",
+  "siege",
+  "truss",
+  "boost",
+  "rebus",
+  "unify",
+  "troll",
+  "tapir",
+  "aside",
+  "ferry",
+  "acute",
+  "picky",
+  "weary",
+  "gripe",
+  "craze",
+  "pluck",
+  "brake",
+  "baton",
+  "champ",
+  "peach",
+  "using",
+  "trace",
+  "vital",
+  "sonic",
+  "masse",
+  "conic",
+  "viral",
+  "rhino",
+  "break",
+  "triad",
+  "epoch",
+  "usher",
+  "exult",
+  "grime",
+  "cheat",
+  "solve",
+  "bring",
+  "prove",
+  "store",
+  "tilde",
+  "clock",
+  "wrote",
+  "retch",
+  "perch",
+  "rouge",
+  "radio",
+  "surer",
+  "finer",
+  "vodka",
+  "heron",
+  "chill",
+  "gaudy",
+  "pithy",
+  "smart",
+  "badly",
+  "rogue",
+  "group",
+  "fixer",
+  "groin",
+  "duchy",
+  "coast",
+  "blurt",
+  "pulpy",
+  "altar",
+  "great",
+  "briar",
+  "click",
+  "gouge",
+  "world",
+  "erode",
+  "boozy",
+  "dozen",
+  "fling",
+  "growl",
+  "abyss",
+  "steed",
+  "enema",
+  "jaunt",
+  "comet",
+  "tweed",
+  "pilot",
+  "dutch",
+  "belch",
+  "ought",
+  "dowry",
+  "thumb",
+  "hyper",
+  "hatch",
+  "alone",
+  "motor",
+  "aback",
+  "guild",
+  "kebab",
+  "spend",
+  "fjord",
+  "essay",
+  "spray",
+  "spicy",
+  "agate",
+  "salad",
+  "basic",
+  "moult",
+  "corny",
+  "forge",
+  "civic",
+  "islet",
+  "labor",
+  "gamma",
+  "lying",
+  "audit",
+  "round",
+  "loopy",
+  "lusty",
+  "golem",
+  "goner",
+  "greet",
+  "start",
+  "lapel",
+  "biome",
+  "parry",
+  "shrub",
+  "front",
+  "wooer",
+  "totem",
+  "flick",
+  "delta",
+  "bleed",
+  "argue",
+  "swirl",
+  "error",
+  "agree",
+  "offal",
+  "flume",
+  "crass",
+  "panel",
+  "stout",
+  "bribe",
+  "drain",
+  "yearn",
+  "print",
+  "seedy",
+  "ivory",
+  "belly",
+  "stand",
+  "first",
+  "forth",
+  "booby",
+  "flesh",
+  "unmet",
+  "linen",
+  "maxim",
+  "pound",
+  "mimic",
+  "spike",
+  "cluck",
+  "crate",
+  "digit",
+  "repay",
+  "sower",
+  "crazy",
+  "adobe",
+  "outdo",
+  "trawl",
+  "whelp",
+  "unfed",
+  "paper",
+  "staff",
+  "croak",
+  "helix",
+  "floss",
+  "pride",
+  "batty",
+  "react",
+  "marry",
+  "abase",
+  "colon",
+  "stool",
+  "crust",
+  "fresh",
+  "death",
+  "major",
+  "feign",
+  "abate",
+  "bench",
+  "quiet",
+  "grade",
+  "stink",
+  "karma",
+  "model",
+  "dwarf",
+  "heath",
+  "serve",
+  "naval",
+  "evade",
+  "focal",
+  "blush",
+  "awake",
+  "humph",
+  "sissy",
+  "rebut",
+  "cigar",
+];
+
+const possibleWords = [
   "women",
   "nikau",
   "swack",
