@@ -6,9 +6,15 @@
   <title>CHS Coding Class</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/wordle.css" />
+  <link rel="stylesheet" href="assets/css/tetris.css" />
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/CreteLogo.png" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
   <script src="scripts/tabs.js"></script>
   <script src="scripts/wordle.js"></script>
+  <script src="scripts/tetris.js"></script>
+  <script src="scripts/quiz.js"></script>
 </head>
 
 <body style="height: 100%;">
@@ -241,7 +247,7 @@ function draw() {
             href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank"
             href="https://office.com/webapps">Office</a>.</iframe> -->
         <h2 style="text-align: center;">Wordle</h2>
-        <div id="game">
+        <div id="game" class="wordle">
           <div id="board-container">
             <div id="board">
               <div class="board-row active-row">
@@ -378,6 +384,7 @@ function draw() {
           </code>
         </p>
 
+        <h2>Starter Code</h2>
         <p>Now check out the starter code here: <a
             href="https://codepen.io/zakkeck/pen/oNEBOBJ">https://codepen.io/zakkeck/pen/oNEBOBJ</a> You don't have to
           save the first Code Pen.
@@ -537,6 +544,85 @@ checkWord() {
   }
 }
         </pre>
+
+        And here is the final version, with tile animations:
+        <pre>
+checkWord() {
+  let guess = this.getEnteredWord();
+  let answer = this.word;
+  let tileStates = [];
+  let letterStates = {};
+
+  [...guess].forEach((currentLetter, index) => {
+    if (currentLetter === answer[index]) {
+      tileStates[index] = "correct";
+      letterStates[currentLetter] = "correct";
+      guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+      answer = answer.substring(0, index) + "-" + answer.substring(index + 1);
+    }
+  });
+
+  [...guess].forEach((currentLetter, index) => {
+    if (currentLetter === "-") {
+      //Do nothing
+    } else if (answer.includes(currentLetter)) {
+      answer = answer.replace(currentLetter, "-");
+      letterStates[currentLetter] = "present";
+      tileStates[index] = "present";
+    } else {
+      if (tileStates[index] !== "correct") {
+        tileStates[index] = "absent";
+      }
+      if (letterStates[currentLetter] !== "correct") {
+        letterStates[currentLetter] = "absent";
+      }
+    }
+  });
+
+  this.activeRow.children[0].classList.add("spin");
+  this.animateLetters(this.activeRow.children[0], tileStates, letterStates);
+}
+
+animateLetters(child, tileStates, letterStates) {
+  setTimeout(() => {
+    this.removeClass(child, "empty");
+    this.addClass(child, tileStates[0]);
+
+    if (child.nextElementSibling) {
+      this.addClass(child.nextElementSibling, "spin");
+      this.animateLetters(
+        child.nextElementSibling,
+        tileStates.slice(1),
+        letterStates
+      );
+    } else {
+      for (const [letter, className] of Object.entries(letterStates)) {
+        let element = document.getElementById(letter);
+        if (className === "correct") {
+          this.removeClass(element, "present");
+        }
+
+        this.addClass(element, className);
+      }
+      if (this.getEnteredWord() === this.word) {
+        this.setScoreInfo(true);
+        let scoreInfo = this.getScoreInfo();
+        setTimeout(function () {
+          alert(
+            `Congratulations! Wins: ${scoreInfo.wins}. Current Streak: ${scoreInfo.currentStreak}`
+          );
+        }, 100);
+
+        this.active = false;
+      }
+
+      if (this.active) {
+        this.setNextActiveRow();
+      }
+    }
+  }, 300);
+}
+        </pre>
         <p>Next steps: Add the keyboard. Each letter will be a button with an id and an onclick event. The id allows us
           to
           use <code>document.getElementById</code> to change the class on the buttons, so we can show if they are
@@ -603,14 +689,50 @@ checkWord() {
 
       <div id="Day3" class="tabcontent" style="display: none">
         <p>
-        <h2 style="text-align: center;">2048 Clone</h2>
+        <h2 style="text-align: center;">Tetris</h2>
+
+        <div class="tetris">
+          <div class="tetris-game-area">
+            <div class="tetris-game">
+              <div id="tetris-grid" class="grid"></div>
+            </div>
+            <div>
+              <div>
+                <h1>Score: <span id="score-display">0</span></h1>
+                <h1>Lines: <span id="lines-score">0</span></h1>
+
+                <button onclick="tetrisGame.start()">Start </button>
+              </div>
+            </div>
+          </div>
+        </div>
         </p>
       </div>
 
       <div id="Day4" class="tabcontent" style="display: none">
-        <p>
-        <h2 style="text-align: center;">Groupchat bots and language parsing</h2>
-        </p>
+
+        <h2 style="text-align: center;">Quiz</h2>
+        <div id="result"></div>
+        <div id="quiz" class="quiz" style="text-align: center;">
+          <div id="question"></div>
+          <div id="answer0">
+            <input type="radio">
+            <span></span>
+          </div>
+          <div id="answer1">
+            <input type="radio">
+            <span></span>
+          </div>
+          <div id="answer2">
+            <input type="radio">
+            <span></span>
+          </div>
+          <div id="answer3">
+            <input type="radio">
+            <span></span>
+          </div>
+          <button onclick="quiz.nextQuestion()">Next Question</button>
+        </div>
       </div>
 
       <div id="Day5" class="tabcontent" style="display: none">

@@ -71,7 +71,7 @@
   user-select: none;
 }
 
-button {
+.wordle button {
   font-family: inherit;
   font-weight: bold;
   border: 0;

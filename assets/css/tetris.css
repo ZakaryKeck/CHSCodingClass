@@ -1,0 +1,53 @@
+.tetris {
+  /* default font size in browsers is 16px = 1em, we make
+       things easier for us and make 10px our base size.
+       We have 10/16 = 0.625 = 1rem as it is set on root element.
+       So 1rem is now 10px throughout our stylesheet.*/
+  font-size: 0.8em;
+}
+
+.tetris {
+  margin: auto;
+  color: #d8edea;
+  width: 50%;
+}
+
+.tetris .square {
+  height: 2rem;
+  width: 2rem;
+}
+
+.tetris button {
+  font-size: 2rem;
+}
+
+.tetris .tetris-game-area {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tetris .grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 20rem;
+  height: 40rem;
+  border: solid 3px black;
+}
+
+.tetris .square {
+  outline: 1px #d3d3d3 solid;
+}
+
+.tetris .block {
+  outline: none;
+}
+
+.tetris .end {
+  background-color: #d8edea;
+}
+
+.tetris .button {
+  text-align: center;
+  margin: 30px;
+}
