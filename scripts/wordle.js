@@ -130,6 +130,8 @@ class Game {
           letterStates
         );
       } else {
+        
+    console.log(letterStates);
         for (const [letter, className] of Object.entries(letterStates)) {
           let element = document.getElementById(letter);
           if (className === "correct") {
