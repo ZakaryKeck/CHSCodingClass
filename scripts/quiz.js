@@ -19,7 +19,6 @@ class Scores {
     this.druid = 0;
     this.fighter = 0;
     this.paladin = 0;
-    this.ranger = 0;
     this.rogue = 0;
     this.sorcerer = 0;
   }
@@ -33,61 +32,47 @@ let questions = [
     new Answer("The lord is my strength", "paladin"),
   ]),
   new Question("What is the best way to improve yourself?", [
-    new Answer("Hardworking study", ""),
-    new Answer("Very strong", "fighter"),
-    new Answer("Old and frail", "sorcerer"),
-    new Answer("The lord is my strength", "paladin"),
+    new Answer("Hardworking study", "sorcerer"),
+    new Answer("Physical training", "fighter"),
+    new Answer("Spend time in nature", "druid"),
+    new Answer("Spend time being spiritual", "paladin"),
   ]),
-  new Question("Where do you like to spend your time?", [
-    new Answer("Hardworking study", ""),
-    new Answer("Very strong", "fighter"),
-    new Answer("Old and frail", "sorcerer"),
-    new Answer("The lord is my strength", "paladin"),
+  new Question("What is the most important?", [
+    new Answer("Love", "bard"),
+    new Answer("Honor", "paladin"),
+    new Answer("Wisdom", "sorcerer"),
+    new Answer("Wealth", "rogue"),
   ]),
-  // new Question("It is better to:", [
-  //   new Answer("Stand up for what you believe in", ""),
-  //   new Answer("Try to see both sides", "fighter"),
-  //   new Answer("Use the conflict for your own personal gain", "sorcerer"),
-  //   new Answer("", "paladin"),
-  // ]),
-  // new Question("What is the most important?", [
-  //   new Answer("Love", "bard"),
-  //   new Answer("Honor", "paladin"),
-  //   new Answer("Wisdom", "sorcerer"),
-  //   new Answer("Wealth", "rogue"),
-  // ]),
-  // new Question("In a fight it is better to:", [
-  //   new Answer("go HAM", "barbarian"),
-  //   new Answer("Wait for reinforcements", "fighter"),
-  //   new Answer("Old and frail", "sorcerer"),
-  //   new Answer("The lord is my strength", "paladin"),
-  // ]),
-  // new Question("Choose the most true:", [
-  //   new Answer("Man is stronger than nature", "barbarian"),
-  //   new Answer("Nature is stronger than man", "fighter"),
-  //   new Answer("Technology is stronger than nature", "sorcerer"),
-  //   new Answer("Nature is stronger than technology", "druid"),
-  // ]),
-  // new Question("Choose the most true:", [
-  //   new Answer("Man is stronger than nature", "barbarian"),
-  //   new Answer("Nature is stronger than man", "fighter"),
-  //   new Answer("Technology is stronger than nature", "sorcerer"),
-  //   new Answer("Nature is stronger than technology", "druid"),
-  // ]),
-  // new Question("Choose the most true:", [
-  //   new Answer("Man is stronger than nature", "barbarian"),
-  //   new Answer("Nature is stronger than man", "fighter"),
-  //   new Answer("Technology is stronger than nature", "sorcerer"),
-  //   new Answer("Nature is stronger than technology", "druid"),
-  // ]),
-  // new Question("Which of these pranks is funniest?", [
-  //   new Answer("Tackling someone into a pool", "barbarian"),
-  //   new Answer("Devious licks", "rogue"),
-  //   new Answer("", ""),
-  //   new Answer("Fake shocking gum", "rogue"),
-  // ]),
-
-  //devious licks
+  new Question("In a fight it is better to:", [
+    new Answer("go HAM", "barbarian"),
+    new Answer("Use the terrain to your advantage", "druid"),
+    new Answer("Resolve the conflict with charisma", "bard"),
+    new Answer("Resolve the conflict with deception", "rogue"),
+  ]),
+  new Question("Choose the most true:", [
+    new Answer("Man is stronger than nature", "barbarian"),
+    new Answer("Nature is stronger than man", "fighter"),
+    new Answer("Technology is stronger than nature", "sorcerer"),
+    new Answer("Nature is stronger than technology", "druid"),
+  ]),
+  new Question("The best reason to work out is:", [
+    new Answer("To look better", "bard"),
+    new Answer("To be healthier", "fighter"),
+    new Answer("Keep the mind healthy", "sorcerer"),
+    new Answer("To experience nature", "druid"),
+  ]),
+  new Question("Which of these pranks is funniest?", [
+    new Answer("Tackling someone into a pool", "barbarian"),
+    new Answer("Devious licks", "rogue"),
+    new Answer("Fake shocking gum", "sorcerer"),
+    new Answer("Fill someone's locker with plants", "druid"),
+  ]),
+  new Question("I can't come up with anymore questions, so pick one", [
+    new Answer("bard", "bard"),
+    new Answer("druid", "druid"),
+    new Answer("rogue", "rogue"),
+    new Answer("paladin", "paladin"),
+  ]),
 ];
 
 class Quiz {
@@ -133,23 +118,21 @@ class Quiz {
       (prev, curr) => prev + curr[1],
       0
     );
-    console.log(scoreTotal);
+    
     this.data = [
       [
         { axis: "Fighter", value: this.scores.fighter / scoreTotal },
-        { axis: "Ranger", value: this.scores.ranger / scoreTotal },
         { axis: "Paladin", value: this.scores.paladin / scoreTotal },
         { axis: "Bard", value: this.scores.bard / scoreTotal },
-        { axis: "Ranger", value: this.scores.ranger / scoreTotal },
         { axis: "Sorcerer", value: this.scores.sorcerer / scoreTotal },
         { axis: "Barbarian", value: this.scores.barbarian / scoreTotal },
         { axis: "Rogue", value: this.scores.rogue / scoreTotal },
+        { axis: "Druid", value: this.scores.druid / scoreTotal }
       ],
     ];
     document.getElementById("quiz").innerHTML = "";
-    console.log(this.data);
+    
     RadarChart(".quiz", this.data);
-    document.getElementById("result").innerHTML = "You are a: " + Math.max(...array.map(o => o.))
   }
 
   addScore() {
@@ -176,7 +159,6 @@ class Quiz {
     answer1Radio.checked = false;
     answer2Radio.checked = false;
     answer3Radio.checked = false;
-    console.log(this.scores);
   }
 }
 

@@ -44,15 +44,449 @@
 
     <div class="loader" style="margin: auto;"></div>
     <div>
-      <!--<div id="Day1" class="tabcontent" style="display: none">
+      <div id="Day1" class="tabcontent" style="display: none">
+        <iframe
+          src="./assets/Day1.pdf"
+          width="100%" height="400px" frameborder="0"></iframe>
+        <h2 style="text-align: center;">Wordle</h2>
+        <div id="game" class="wordle">
+          <div id="board-container">
+            <div id="board">
+              <div class="board-row active-row">
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+              </div>
+              <div class="board-row">
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+              </div>
+              <div class="board-row">
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+              </div>
+              <div class="board-row">
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+              </div>
+              <div class="board-row">
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+              </div>
+              <div class="board-row">
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+                <div class="tile empty"></div>
+              </div>
+            </div>
+
+          </div>
+          <div id="keyboard">
+            <div class="keyboard-row ">
+              <button id="q" onclick="game.handleKeyPress('q')">q</button>
+              <button id="w" onclick="game.handleKeyPress('w')">w</button>
+              <button id="e" onclick="game.handleKeyPress('e')">e</button>
+              <button id="r" onclick="game.handleKeyPress('r')">r</button>
+              <button id="t" onclick="game.handleKeyPress('t')">t</button>
+              <button id="y" onclick="game.handleKeyPress('y')">y</button>
+              <button id="u" onclick="game.handleKeyPress('u')">u</button>
+              <button id="i" onclick="game.handleKeyPress('i')">i</button>
+              <button id="o" onclick="game.handleKeyPress('o')">o</button>
+              <button id="p" onclick="game.handleKeyPress('p')">p</button>
+            </div>
+            <div class="keyboard-row ">
+              <button id="a" onclick="game.handleKeyPress('a')">a</button>
+              <button id="s" onclick="game.handleKeyPress('s')">s</button>
+              <button id="d" onclick="game.handleKeyPress('d')">d</button>
+              <button id="f" onclick="game.handleKeyPress('f')">f</button>
+              <button id="g" onclick="game.handleKeyPress('g')">g</button>
+              <button id="h" onclick="game.handleKeyPress('h')">h</button>
+              <button id="j" onclick="game.handleKeyPress('j')">j</button>
+              <button id="k" onclick="game.handleKeyPress('k')">k</button>
+              <button id="l" onclick="game.handleKeyPress('l')">l</button>
+            </div>
+            <div class="keyboard-row ">
+              <button onclick="game.handleKeyPress('Enter')" class="one-and-a-half">Enter</button>
+              <button id="z" onclick="game.handleKeyPress('z')">z</button>
+              <button id="x" onclick="game.handleKeyPress('x')">x</button>
+              <button id="c" onclick="game.handleKeyPress('c')">c</button>
+              <button id="v" onclick="game.handleKeyPress('v')">v</button>
+              <button id="b" onclick="game.handleKeyPress('b')">b</button>
+              <button id="n" onclick="game.handleKeyPress('n')">n</button>
+              <button id="m" onclick="game.handleKeyPress('m')">m</button>
+              <button id="newGame" onclick="game.handleKeyPress('Backspace')" class="one-and-a-half">
+                Back
+              </button>
+            </div>
+            <button onclick="game.newGame()" style="margin: auto; font-size: 12px; padding: 5px">New Game</button>
+          </div>
+        </div>
+        <p>Wordle is a game where you have 6 chances to guess a 5 letter word. Each letter
+          gives you some information in the form of a color. Green means that you guessed
+          the letter in the correct spot, yellow means you guessed the letter in the incorrect
+          spot, and gray means the letter is not in the word.</p>
+
+        <p>Today we're going to be working together to remake wordle with basic web development.</p>
+
+        <p>Open up CodePen here: <a href="https://codepen.io/pen/">https://codepen.io/pen/</a></p>
+
+        <p>As you can see in the CodePen there are three basic pieces to every website:
+        <ul>
+          <li>HTML - The Structure</li>
+          <li>CSS - The Style </li>
+          <li>Javascript - The Code</li>
+        </ul>
+        </p>
+
+        <p>Let's <b>start by copy pasting this into the HTML section</b>:</p>
+        <div><code>&lt;div&gt;Hello, World!&lt;/div&gt;</code></div>
+        <p>
+          <code>div</code>
+          is an html element that stands for division. All HTML elements have an opening tag: <code>&lt;div&gt;</code>,
+          and a closing tag <code>&lt;/div&gt;</code> that surround its innerHTML.
+        </p>
+
+        <p>Now let's add some style to our div. <b>Copy past this into the CSS section.</b></p>
+        <div><code>.awesome-div{ color: red;}</code></div>
+        <p><b>And replace our div in the html section with this:</b>
+        <div><code>&lt;div class="awesome-div"&gt;Hello, World!&lt;/div&gt;</code></div>
+        </p>
+
+        <p>Color is an attribute that will change the color of the text! Now let's add some code.
+          <b>Copy paste this into the JS section:</b>
+        <pre class="highlight">
+        function showMessage() {
+          alert("You clicked on a div!");
+        }</pre>
+        </p>
+
+        <p><b>And replace our div with this:</b></p>
+        <div><code>&lt;div class="awesome-div" onclick="showMessage()"&gt;Hello, World!&lt;/div&gt;</code></div>
+
+        <p>Sweet! When you click on the div, our message shows up. There are a few pieces to talk about here.
+          <code>onclick</code> is an attribute that you can put on html elements. The value of the attribute is a
+          function that is called when you click on the element. <code>alert()</code> is a function that is built
+          in to web browers and shows the dialogue box. You've probably seen it before!
+          </code>
+        </p>
+
+        <h2>Starter Code</h2>
+        <p>Now check out the starter code here: <a
+            href="https://codepen.io/zakkeck/pen/oNEBOBJ">https://codepen.io/zakkeck/pen/oNEBOBJ</a> You don't have to
+          save the first Code Pen.
+        </p>
+
+        <p>We have one tile of Wordle! Not very fun to play if you ask me. </p>
+
+        <p>Let's look at the HTML. We have a Header <code>h2</code>. Then we have a lot of divs.
+          <code>id</code> is a property that gives you a way to accesss HTML Elements, like its name. So, we have
+          divs named "game", "board-container", and "board". It makes sense to name them because we will have only 1 of
+          each.
+          On the other hand, we have two more divs with classes. These classes say that the the first div is a
+          "board-row" and the "active-row".
+          The next div is a "tile" and it is "empty"
+        </p>
+        <p><b>Add 4 more tiles.</b> You will need to copy paste the tile div.</p>
+        <p><b>Now add 5 more rows.</b> Now your wordle board is complete!</p>
+
+        <p>Now let's check out the styles. In the CSS section, each ".class" shows what styles are applied to an html
+          element with that
+          class name. Find the <code>.empty</code> class, and take a look at the background-color. Try changing it to
+          something else
+          from this list <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
+            target="blank">https://www.w3.org/wiki/CSS/Properties/color/keywords</a> </p>
+
+        <p>Now, there are 4 basic states that a tile can be in. What are they? Let's add a CSS class for each missing
+          one.</p>
+
+        <pre>
+    .absent {
+      background-color: ;
+      color: ;
+    }
+    
+    .correct {
+      background-color: ;
+      color: ;
+    }
+    
+    .present {
+      background-color: ;
+      color: ;
+    }
+            </pre>
+
+        <p><b>Set the colors for each one.</b></p>
+
+        <p>Now let's work on the JS functions together. You may notice some weird code at the top of the JS section in
+          Code Pen.
+          <code>window.addEventListener</code> is
+          a browser function that allows us to get the key that is pressed by the user.
+        </p>
+
+        <p>I'll include the finished version after each section, but try
+          to type it out as we go through it together. You can copy paste at the end if you get stuck
+        </p>
+        <ul>
+          <li><code>handleKeyPress</code></li>
+          <li><code>checkWord</code></li>
+        </ul>
+
+        <pre>
+    handleKeyPress(key) {
+      if (this.isLetter(key)) {
+        let firstEmptyTile = this.getFirstEmptyTile();
+    
+        if (firstEmptyTile) {
+          firstEmptyTile.innerHTML = key;
+        }
+      } else if (key === "Backspace") {
+        let lastFullTile = this.getLastFullTile();
+    
+        if (lastFullTile) {
+          lastFullTile.innerHTML = "";
+        }
+      } else if (key === "Enter") {
+        if (this.getFirstEmptyTile()) {
+          alert("Need 5 letters");
+        } else if (data.includes(this.getEnteredWord())) {
+          this.addRow();
+        } else {
+          alert("Not a word in list");
+        }
+      }
+    }
+            </pre>
+
+        Here is a version with a slight bug. <b>Paste it into the Code Pen and let's see if we can find and fix it.</b>
+        <pre>
+    checkWord() {
+      [...this.activeRow.children].forEach((x, index) => {
+        let currentLetter = x.innerHTML;
+        x.classList.remove("empty");
+        if (currentLetter === this.word[index]) {
+          x.classList.add("correct");
+        } else if (this.word.includes(currentLetter)) {
+          x.classList.add("present");
+        } else {
+          x.classList.add("absent");
+        }
+      });
+    
+      let enteredWord = this.getEnteredWord();
+    
+      if (enteredWord === this.word) {
+        setTimeout(function () {
+          alert("Congratulations!");
+        }, 10);
+    
+        this.active = false;
+      }
+    }
+            </pre>
+
+        <p>Here's the working version.</p>
+        <pre>
+    checkWord() {
+      let guess = this.getEnteredWord();
+      let copy = this.word;
+    
+      [...guess].forEach((currentLetter, index) => {
+        let keyboardLetter = document.getElementById(currentLetter);
+    
+        if (currentLetter === copy[index]) {
+          this.activeRow.children[index].classList.remove("empty");
+          this.activeRow.children[index].classList.add("correct");
+          guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+          copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
+          keyboardLetter.classList.remove("present");
+          keyboardLetter.classList.add("correct");
+        }
+      });
+    
+      [...guess].forEach((currentLetter, index) => {
+        this.activeRow.children[index].classList.remove("empty");
+        let keyboardLetter = document.getElementById(currentLetter);
+    
+        if (currentLetter === "-") {
+          this.activeRow.children[index].classList.add("absent");
+        } else if (copy.includes(currentLetter)) {
+          this.activeRow.children[index].classList.add("present");
+          guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+          copy = copy.replace(currentLetter, "-");
+          keyboardLetter.classList.add("present");
+        } else {
+          this.activeRow.children[index].classList.add("absent");
+          keyboardLetter.classList.add("absent");
+        }
+      });
+    
+      if (this.getEnteredWord() === this.word) {
+        setTimeout(function () {
+          alert("Congratulations!");
+        }, 10);
+    
+        this.active = false;
+      }
+    }
+            </pre>
+
+        And here is the final version, with tile animations:
+        <pre>
+    checkWord() {
+      let guess = this.getEnteredWord();
+      let answer = this.word;
+      let tileStates = [];
+      let letterStates = {};
+    
+      [...guess].forEach((currentLetter, index) => {
+        if (currentLetter === answer[index]) {
+          tileStates[index] = "correct";
+          letterStates[currentLetter] = "correct";
+          guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
+          answer = answer.substring(0, index) + "-" + answer.substring(index + 1);
+        }
+      });
+    
+      [...guess].forEach((currentLetter, index) => {
+        if (currentLetter === "-") {
+          //Do nothing
+        } else if (answer.includes(currentLetter)) {
+          answer = answer.replace(currentLetter, "-");
+          letterStates[currentLetter] = "present";
+          tileStates[index] = "present";
+        } else {
+          if (tileStates[index] !== "correct") {
+            tileStates[index] = "absent";
+          }
+          if (letterStates[currentLetter] !== "correct") {
+            letterStates[currentLetter] = "absent";
+          }
+        }
+      });
+    
+      this.activeRow.children[0].classList.add("spin");
+      this.animateLetters(this.activeRow.children[0], tileStates, letterStates);
+    }
+    
+    animateLetters(child, tileStates, letterStates) {
+      setTimeout(() => {
+        this.removeClass(child, "empty");
+        this.addClass(child, tileStates[0]);
+    
+        if (child.nextElementSibling) {
+          this.addClass(child.nextElementSibling, "spin");
+          this.animateLetters(
+            child.nextElementSibling,
+            tileStates.slice(1),
+            letterStates
+          );
+        } else {
+          for (const [letter, className] of Object.entries(letterStates)) {
+            let element = document.getElementById(letter);
+            if (className === "correct") {
+              this.removeClass(element, "present");
+            }
+    
+            this.addClass(element, className);
+          }
+          if (this.getEnteredWord() === this.word) {
+            this.setScoreInfo(true);
+            let scoreInfo = this.getScoreInfo();
+            setTimeout(function () {
+              alert(
+                `Congratulations! Wins: ${scoreInfo.wins}. Current Streak: ${scoreInfo.currentStreak}`
+              );
+            }, 100);
+    
+            this.active = false;
+          }
+    
+          if (this.active) {
+            this.setNextActiveRow();
+          }
+        }
+      }, 300);
+    }
+            </pre>
+        <p>Next steps: Add the keyboard. Each letter will be a button with an id and an onclick event. The id allows us
+          to
+          use <code>document.getElementById</code> to change the class on the buttons, so we can show if they are
+          correct,
+          absent, or present.
+        </p>
+        <!-- 
+            <p>Work with chrome dev tools</p> -->
+
+        <pre class="highlight">
+      &lt;&#100;&#105;&#118;&#32;&#105;&#100;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&quot;&gt;
+    &#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#113;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#113;&apos;&rpar;&quot;&gt;&#113;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#119;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#119;&apos;&rpar;&quot;&gt;&#119;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#101;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#101;&apos;&rpar;&quot;&gt;&#101;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#114;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#114;&apos;&rpar;&quot;&gt;&#114;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#116;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#116;&apos;&rpar;&quot;&gt;&#116;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#121;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#121;&apos;&rpar;&quot;&gt;&#121;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#117;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#117;&apos;&rpar;&quot;&gt;&#117;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#105;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#105;&apos;&rpar;&quot;&gt;&#105;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#111;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#111;&apos;&rpar;&quot;&gt;&#111;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#112;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#112;&apos;&rpar;&quot;&gt;&#112;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+    &#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#115;&#112;&#97;&#99;&#101;&#114;&#32;&#104;&#97;&#108;&#102;&quot;&gt;&lt;&sol;&#100;&#105;&#118;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#97;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#97;&apos;&rpar;&quot;&gt;&#97;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#115;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#115;&apos;&rpar;&quot;&gt;&#115;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#100;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#100;&apos;&rpar;&quot;&gt;&#100;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#102;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#102;&apos;&rpar;&quot;&gt;&#102;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#103;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#103;&apos;&rpar;&quot;&gt;&#103;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#104;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#104;&apos;&rpar;&quot;&gt;&#104;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#106;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#106;&apos;&rpar;&quot;&gt;&#106;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#107;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#107;&apos;&rpar;&quot;&gt;&#107;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#108;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#108;&apos;&rpar;&quot;&gt;&#108;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#115;&#112;&#97;&#99;&#101;&#114;&#32;&#104;&#97;&#108;&#102;&quot;&gt;&lt;&sol;&#100;&#105;&#118;&gt;
+    &#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+    &#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#69;&#110;&#116;&#101;&#114;&apos;&rpar;&quot;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#111;&#110;&#101;&#45;&#97;&#110;&#100;&#45;&#97;&#45;&#104;&#97;&#108;&#102;&quot;&gt;&#69;&#110;&#116;&#101;&#114;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#122;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#122;&apos;&rpar;&quot;&gt;&#122;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#120;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#120;&apos;&rpar;&quot;&gt;&#120;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#99;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#99;&apos;&rpar;&quot;&gt;&#99;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#118;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#118;&apos;&rpar;&quot;&gt;&#118;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#98;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#98;&apos;&rpar;&quot;&gt;&#98;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#110;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#110;&apos;&rpar;&quot;&gt;&#110;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#109;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#109;&apos;&rpar;&quot;&gt;&#109;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#66;&#97;&#99;&#107;&#115;&#112;&#97;&#99;&#101;&apos;&rpar;&quot;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#111;&#110;&#101;&#45;&#97;&#110;&#100;&#45;&#97;&#45;&#104;&#97;&#108;&#102;&quot;&gt;
+    &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#66;&#97;&#99;&#107;
+    &#32;&#32;&#32;&#32;&#32;&#32;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
+    &#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+    &#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
+    </pre>
+
+        <p>And that's finished Wordle! What are some ways we can make it our own?</p>
+      </div>
+
+      <div id="Day2" class="tabcontent" style="display: none">
         <div>
           <iframe
-            src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211738&amp;authkey=AA5f5Q1VI9Yt5aE&amp;em=2&amp;wdAr=1.7777777777777777"
-            width="100%" height="400px" frameborder="0">This is an embedded
-            <a target="_blank" href="https://office.com">Microsoft Office</a>
-            presentation, powered by
-            <a target="_blank" href="https://office.com/webapps">Office</a>
-          </iframe>
+          src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211776&amp;authkey=AN9T64QlmHVjDGA&amp;em=2&amp;wdAr=1.7777777777777777"
+          width="100%" height="400px" frameborder="0">This is an embedded <a target="_blank"
+            href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank"
+            href="https://office.com/webapps">Office</a>.</iframe>
         </div>
 
         <h2 style="text-align: center;">Concurrent Metronomes</h6>
@@ -238,453 +672,6 @@ function draw() {
             <li>Create an entirely new project together. Any ideas?</li>
           </ul>
           </p>
-      </div>-->
-
-      <div id="Day2" class="tabcontent" style="display: none">
-        <!-- <iframe
-          src="https://onedrive.live.com/embed?cid=782CBE864F007467&amp;resid=782CBE864F007467%211776&amp;authkey=AN9T64QlmHVjDGA&amp;em=2&amp;wdAr=1.7777777777777777"
-          width="100%" height="400px" frameborder="0">This is an embedded <a target="_blank"
-            href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank"
-            href="https://office.com/webapps">Office</a>.</iframe> -->
-        <h2 style="text-align: center;">Wordle</h2>
-        <div id="game" class="wordle">
-          <div id="board-container">
-            <div id="board">
-              <div class="board-row active-row">
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-              </div>
-              <div class="board-row">
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-              </div>
-              <div class="board-row">
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-              </div>
-              <div class="board-row">
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-              </div>
-              <div class="board-row">
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-              </div>
-              <div class="board-row">
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-                <div class="tile empty"></div>
-              </div>
-            </div>
-
-          </div>
-          <div id="keyboard">
-            <div class="keyboard-row ">
-              <button id="q" onclick="game.handleKeyPress('q')">q</button>
-              <button id="w" onclick="game.handleKeyPress('w')">w</button>
-              <button id="e" onclick="game.handleKeyPress('e')">e</button>
-              <button id="r" onclick="game.handleKeyPress('r')">r</button>
-              <button id="t" onclick="game.handleKeyPress('t')">t</button>
-              <button id="y" onclick="game.handleKeyPress('y')">y</button>
-              <button id="u" onclick="game.handleKeyPress('u')">u</button>
-              <button id="i" onclick="game.handleKeyPress('i')">i</button>
-              <button id="o" onclick="game.handleKeyPress('o')">o</button>
-              <button id="p" onclick="game.handleKeyPress('p')">p</button>
-            </div>
-            <div class="keyboard-row ">
-              <button id="a" onclick="game.handleKeyPress('a')">a</button>
-              <button id="s" onclick="game.handleKeyPress('s')">s</button>
-              <button id="d" onclick="game.handleKeyPress('d')">d</button>
-              <button id="f" onclick="game.handleKeyPress('f')">f</button>
-              <button id="g" onclick="game.handleKeyPress('g')">g</button>
-              <button id="h" onclick="game.handleKeyPress('h')">h</button>
-              <button id="j" onclick="game.handleKeyPress('j')">j</button>
-              <button id="k" onclick="game.handleKeyPress('k')">k</button>
-              <button id="l" onclick="game.handleKeyPress('l')">l</button>
-            </div>
-            <div class="keyboard-row ">
-              <button onclick="game.handleKeyPress('Enter')" class="one-and-a-half">Enter</button>
-              <button id="z" onclick="game.handleKeyPress('z')">z</button>
-              <button id="x" onclick="game.handleKeyPress('x')">x</button>
-              <button id="c" onclick="game.handleKeyPress('c')">c</button>
-              <button id="v" onclick="game.handleKeyPress('v')">v</button>
-              <button id="b" onclick="game.handleKeyPress('b')">b</button>
-              <button id="n" onclick="game.handleKeyPress('n')">n</button>
-              <button id="m" onclick="game.handleKeyPress('m')">m</button>
-              <button id="newGame" onclick="game.handleKeyPress('Backspace')" class="one-and-a-half">
-                Back
-              </button>
-            </div>
-            <button onclick="game.newGame()" style="margin: auto; font-size: 12px; padding: 5px">New Game</button>
-          </div>
-        </div>
-        <p>Wordle is a game where you have 6 chances to guess a 5 letter word. Each letter
-          gives you some information in the form of a color. Green means that you guessed
-          the letter in the correct spot, yellow means you guessed the letter in the incorrect
-          spot, and gray means the letter is not in the word.</p>
-
-        <p>Today we're going to be working together to remake wordle with basic web development.</p>
-
-        <p>Open up CodePen here: <a href="https://codepen.io/pen/">https://codepen.io/pen/</a></p>
-
-        <p>As you can see in the CodePen there are three basic pieces to every website:
-        <ul>
-          <li>HTML - The Structure</li>
-          <li>CSS - The Style </li>
-          <li>Javascript - The Code</li>
-        </ul>
-        </p>
-
-        <p>Let's <b>start by copy pasting this into the HTML section</b>:</p>
-        <div><code>&lt;div&gt;Hello, World!&lt;/div&gt;</code></div>
-        <p>
-          <code>div</code>
-          is an html element that stands for division. All HTML elements have an opening tag: <code>&lt;div&gt;</code>,
-          and a closing tag <code>&lt;/div&gt;</code> that surround its innerHTML.
-        </p>
-
-        <p>Now let's add some style to our div. <b>Copy past this into the CSS section.</b></p>
-        <div><code>.awesome-div{ color: red;}</code></div>
-        <p><b>And replace our div in the html section with this:</b>
-        <div><code>&lt;div class="awesome-div"&gt;Hello, World!&lt;/div&gt;</code></div>
-        </p>
-
-        <p>Color is an attribute that will change the color of the text! Now let's add some code.
-          <b>Copy paste this into the JS section:</b>
-        <pre class="highlight">
-    function showMessage() {
-      alert("You clicked on a div!");
-    }</pre>
-        </p>
-
-        <p><b>And replace our div with this:</b></p>
-        <div><code>&lt;div class="awesome-div" onclick="showMessage()"&gt;Hello, World!&lt;/div&gt;</code></div>
-
-        <p>Sweet! When you click on the div, our message shows up. There are a few pieces to talk about here.
-          <code>onclick</code> is an attribute that you can put on html elements. The value of the attribute is a
-          function that is called when you click on the element. <code>alert()</code> is a function that is built
-          in to web browers and shows the dialogue box. You've probably seen it before!
-          </code>
-        </p>
-
-        <h2>Starter Code</h2>
-        <p>Now check out the starter code here: <a
-            href="https://codepen.io/zakkeck/pen/oNEBOBJ">https://codepen.io/zakkeck/pen/oNEBOBJ</a> You don't have to
-          save the first Code Pen.
-        </p>
-
-        <p>We have one tile of Wordle! Not very fun to play if you ask me. </p>
-
-        <p>Let's look at the HTML. We have a Header <code>h2</code>. Then we have a lot of divs.
-          <code>id</code> is a property that gives you a way to accesss HTML Elements, like its name. So, we have
-          divs named "game", "board-container", and "board". It makes sense to name them because we will have only 1 of
-          each.
-          On the other hand, we have two more divs with classes. These classes say that the the first div is a
-          "board-row" and the "active-row".
-          The next div is a "tile" and it is "empty"
-        </p>
-        <p><b>Add 4 more tiles.</b> You will need to copy paste the tile div.</p>
-        <p><b>Now add 5 more rows.</b> Now your wordle board is complete!</p>
-
-        <p>Now let's check out the styles. In the CSS section, each ".class" shows what styles are applied to an html
-          element with that
-          class name. Find the <code>.empty</code> class, and take a look at the background-color. Try changing it to
-          something else
-          from this list <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
-            target="blank">https://www.w3.org/wiki/CSS/Properties/color/keywords</a> </p>
-
-        <p>Now, there are 4 basic states that a tile can be in. What are they? Let's add a CSS class for each missing
-          one.</p>
-
-        <pre>
-.absent {
-  background-color: ;
-  color: ;
-}
-
-.correct {
-  background-color: ;
-  color: ;
-}
-
-.present {
-  background-color: ;
-  color: ;
-}
-        </pre>
-
-        <p><b>Set the colors for each one.</b></p>
-
-        <p>Now let's work on the JS functions together. You may notice some weird code at the top of the JS section in
-          Code Pen.
-          <code>window.addEventListener</code> is
-          a browser function that allows us to get the key that is pressed by the user.
-        </p>
-
-        <p>I'll include the finished version after each section, but try
-          to type it out as we go through it together. You can copy paste at the end if you get stuck
-        </p>
-        <ul>
-          <li><code>handleKeyPress</code></li>
-          <li><code>checkWord</code></li>
-        </ul>
-
-        <pre>
-handleKeyPress(key) {
-  if (this.isLetter(key)) {
-    let firstEmptyTile = this.getFirstEmptyTile();
-
-    if (firstEmptyTile) {
-      firstEmptyTile.innerHTML = key;
-    }
-  } else if (key === "Backspace") {
-    let lastFullTile = this.getLastFullTile();
-
-    if (lastFullTile) {
-      lastFullTile.innerHTML = "";
-    }
-  } else if (key === "Enter") {
-    if (this.getFirstEmptyTile()) {
-      alert("Need 5 letters");
-    } else if (data.includes(this.getEnteredWord())) {
-      this.addRow();
-    } else {
-      alert("Not a word in list");
-    }
-  }
-}
-        </pre>
-
-        Here is a version with a slight bug. <b>Paste it into the Code Pen and let's see if we can find and fix it.</b>
-        <pre>
-checkWord() {
-  [...this.activeRow.children].forEach((x, index) => {
-    let currentLetter = x.innerHTML;
-    x.classList.remove("empty");
-    if (currentLetter === this.word[index]) {
-      x.classList.add("correct");
-    } else if (this.word.includes(currentLetter)) {
-      x.classList.add("present");
-    } else {
-      x.classList.add("absent");
-    }
-  });
-
-  let enteredWord = this.getEnteredWord();
-
-  if (enteredWord === this.word) {
-    setTimeout(function () {
-      alert("Congratulations!");
-    }, 10);
-
-    this.active = false;
-  }
-}
-        </pre>
-
-        <p>Here's the working version.</p>
-        <pre>
-checkWord() {
-  let guess = this.getEnteredWord();
-  let copy = this.word;
-
-  [...guess].forEach((currentLetter, index) => {
-    let keyboardLetter = document.getElementById(currentLetter);
-
-    if (currentLetter === copy[index]) {
-      this.activeRow.children[index].classList.remove("empty");
-      this.activeRow.children[index].classList.add("correct");
-      guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
-      copy = copy.substring(0, index) + "-" + copy.substring(index + 1);
-      keyboardLetter.classList.remove("present");
-      keyboardLetter.classList.add("correct");
-    }
-  });
-
-  [...guess].forEach((currentLetter, index) => {
-    this.activeRow.children[index].classList.remove("empty");
-    let keyboardLetter = document.getElementById(currentLetter);
-
-    if (currentLetter === "-") {
-      this.activeRow.children[index].classList.add("absent");
-    } else if (copy.includes(currentLetter)) {
-      this.activeRow.children[index].classList.add("present");
-      guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
-      copy = copy.replace(currentLetter, "-");
-      keyboardLetter.classList.add("present");
-    } else {
-      this.activeRow.children[index].classList.add("absent");
-      keyboardLetter.classList.add("absent");
-    }
-  });
-
-  if (this.getEnteredWord() === this.word) {
-    setTimeout(function () {
-      alert("Congratulations!");
-    }, 10);
-
-    this.active = false;
-  }
-}
-        </pre>
-
-        And here is the final version, with tile animations:
-        <pre>
-checkWord() {
-  let guess = this.getEnteredWord();
-  let answer = this.word;
-  let tileStates = [];
-  let letterStates = {};
-
-  [...guess].forEach((currentLetter, index) => {
-    if (currentLetter === answer[index]) {
-      tileStates[index] = "correct";
-      letterStates[currentLetter] = "correct";
-      guess = guess.substring(0, index) + "-" + guess.substring(index + 1);
-      answer = answer.substring(0, index) + "-" + answer.substring(index + 1);
-    }
-  });
-
-  [...guess].forEach((currentLetter, index) => {
-    if (currentLetter === "-") {
-      //Do nothing
-    } else if (answer.includes(currentLetter)) {
-      answer = answer.replace(currentLetter, "-");
-      letterStates[currentLetter] = "present";
-      tileStates[index] = "present";
-    } else {
-      if (tileStates[index] !== "correct") {
-        tileStates[index] = "absent";
-      }
-      if (letterStates[currentLetter] !== "correct") {
-        letterStates[currentLetter] = "absent";
-      }
-    }
-  });
-
-  this.activeRow.children[0].classList.add("spin");
-  this.animateLetters(this.activeRow.children[0], tileStates, letterStates);
-}
-
-animateLetters(child, tileStates, letterStates) {
-  setTimeout(() => {
-    this.removeClass(child, "empty");
-    this.addClass(child, tileStates[0]);
-
-    if (child.nextElementSibling) {
-      this.addClass(child.nextElementSibling, "spin");
-      this.animateLetters(
-        child.nextElementSibling,
-        tileStates.slice(1),
-        letterStates
-      );
-    } else {
-      for (const [letter, className] of Object.entries(letterStates)) {
-        let element = document.getElementById(letter);
-        if (className === "correct") {
-          this.removeClass(element, "present");
-        }
-
-        this.addClass(element, className);
-      }
-      if (this.getEnteredWord() === this.word) {
-        this.setScoreInfo(true);
-        let scoreInfo = this.getScoreInfo();
-        setTimeout(function () {
-          alert(
-            `Congratulations! Wins: ${scoreInfo.wins}. Current Streak: ${scoreInfo.currentStreak}`
-          );
-        }, 100);
-
-        this.active = false;
-      }
-
-      if (this.active) {
-        this.setNextActiveRow();
-      }
-    }
-  }, 300);
-}
-        </pre>
-        <p>Next steps: Add the keyboard. Each letter will be a button with an id and an onclick event. The id allows us
-          to
-          use <code>document.getElementById</code> to change the class on the buttons, so we can show if they are
-          correct,
-          absent, or present.
-        </p>
-        <!-- 
-        <p>Work with chrome dev tools</p> -->
-
-        <pre class="highlight">
-  &lt;&#100;&#105;&#118;&#32;&#105;&#100;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&quot;&gt;
-&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#113;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#113;&apos;&rpar;&quot;&gt;&#113;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#119;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#119;&apos;&rpar;&quot;&gt;&#119;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#101;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#101;&apos;&rpar;&quot;&gt;&#101;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#114;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#114;&apos;&rpar;&quot;&gt;&#114;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#116;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#116;&apos;&rpar;&quot;&gt;&#116;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#121;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#121;&apos;&rpar;&quot;&gt;&#121;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#117;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#117;&apos;&rpar;&quot;&gt;&#117;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#105;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#105;&apos;&rpar;&quot;&gt;&#105;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#111;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#111;&apos;&rpar;&quot;&gt;&#111;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#112;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#112;&apos;&rpar;&quot;&gt;&#112;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
-&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#115;&#112;&#97;&#99;&#101;&#114;&#32;&#104;&#97;&#108;&#102;&quot;&gt;&lt;&sol;&#100;&#105;&#118;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#97;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#97;&apos;&rpar;&quot;&gt;&#97;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#115;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#115;&apos;&rpar;&quot;&gt;&#115;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#100;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#100;&apos;&rpar;&quot;&gt;&#100;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#102;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#102;&apos;&rpar;&quot;&gt;&#102;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#103;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#103;&apos;&rpar;&quot;&gt;&#103;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#104;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#104;&apos;&rpar;&quot;&gt;&#104;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#106;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#106;&apos;&rpar;&quot;&gt;&#106;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#107;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#107;&apos;&rpar;&quot;&gt;&#107;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#108;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#108;&apos;&rpar;&quot;&gt;&#108;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#115;&#112;&#97;&#99;&#101;&#114;&#32;&#104;&#97;&#108;&#102;&quot;&gt;&lt;&sol;&#100;&#105;&#118;&gt;
-&#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
-&#32;&#32;&#32;&#32;&lt;&#100;&#105;&#118;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#107;&#101;&#121;&#98;&#111;&#97;&#114;&#100;&#45;&#114;&#111;&#119;&#32;&quot;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#69;&#110;&#116;&#101;&#114;&apos;&rpar;&quot;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#111;&#110;&#101;&#45;&#97;&#110;&#100;&#45;&#97;&#45;&#104;&#97;&#108;&#102;&quot;&gt;&#69;&#110;&#116;&#101;&#114;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#122;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#122;&apos;&rpar;&quot;&gt;&#122;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#120;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#120;&apos;&rpar;&quot;&gt;&#120;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#99;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#99;&apos;&rpar;&quot;&gt;&#99;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#118;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#118;&apos;&rpar;&quot;&gt;&#118;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#98;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#98;&apos;&rpar;&quot;&gt;&#98;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#110;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#110;&apos;&rpar;&quot;&gt;&#110;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#105;&#100;&equals;&quot;&#109;&quot;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#109;&apos;&rpar;&quot;&gt;&#109;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&#98;&#117;&#116;&#116;&#111;&#110;&#32;&#111;&#110;&#99;&#108;&#105;&#99;&#107;&equals;&quot;&#103;&#97;&#109;&#101;&period;&#104;&#97;&#110;&#100;&#108;&#101;&#75;&#101;&#121;&#80;&#114;&#101;&#115;&#115;&lpar;&apos;&#66;&#97;&#99;&#107;&#115;&#112;&#97;&#99;&#101;&apos;&rpar;&quot;&#32;&#99;&#108;&#97;&#115;&#115;&equals;&quot;&#111;&#110;&#101;&#45;&#97;&#110;&#100;&#45;&#97;&#45;&#104;&#97;&#108;&#102;&quot;&gt;
-&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#66;&#97;&#99;&#107;
-&#32;&#32;&#32;&#32;&#32;&#32;&lt;&sol;&#98;&#117;&#116;&#116;&#111;&#110;&gt;
-&#32;&#32;&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
-&#32;&#32;&lt;&sol;&#100;&#105;&#118;&gt;
-</pre>
-
-        <!-- <iframe height="800" style="width: 100%;" scrolling="no" title="Untitled"
-          src="https://codepen.io/zakkeck/embed/oNEBOBJ?default-tab=html%2Cresult" frameborder="no" loading="lazy"
-          allowtransparency="true" allowfullscreen="true">
-          See the Pen <a href="https://codepen.io/zakkeck/pen/oNEBOBJ">
-            Untitled</a> by Zak Keck (<a href="https://codepen.io/zakkeck">@zakkeck</a>)
-          on <a href="https://codepen.io">CodePen</a>.
-        </iframe> -->
-
-        <p>And that's finished Wordle! What are some ways we can make it our own?</p>
-
       </div>
 
       <div id="Day3" class="tabcontent" style="display: none">
@@ -710,34 +697,47 @@ animateLetters(child, tileStates, letterStates) {
       </div>
 
       <div id="Day4" class="tabcontent" style="display: none">
-
-        <h2 style="text-align: center;">Quiz</h2>
-        <div id="result"></div>
-        <div id="quiz" class="quiz" style="text-align: center;">
-          <div id="question"></div>
-          <div id="answer0">
-            <input type="radio">
-            <span></span>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <h2>Quiz</h2>
+          <div id="quiz" class="quiz">
+            <h3 id="question"></h3>
+            <div id="answer0">
+              <input name="answer" type="radio">
+              <span></span>
+            </div>
+            <div id="answer1">
+              <input name="answer" type="radio">
+              <span></span>
+            </div>
+            <div id="answer2">
+              <input name="answer" type="radio">
+              <span></span>
+            </div>
+            <div id="answer3">
+              <input name="answer" type="radio">
+              <span></span>
+            </div>
+            <button onclick="quiz.nextQuestion()" style="margin-top:15px">Next Question</button>
           </div>
-          <div id="answer1">
-            <input type="radio">
-            <span></span>
-          </div>
-          <div id="answer2">
-            <input type="radio">
-            <span></span>
-          </div>
-          <div id="answer3">
-            <input type="radio">
-            <span></span>
-          </div>
-          <button onclick="quiz.nextQuestion()">Next Question</button>
         </div>
+
       </div>
 
       <div id="Day5" class="tabcontent" style="display: none">
         <p>
         <h2 style="text-align: center;">Add Your Personal Website</h2>
+        <ol>
+          <li>
+            Download the starter code.
+          </li>
+          <li>
+            Create a <a href="www.github.com">www.github.com</a> account.
+          </li>
+          <li>
+            Create a new repository.
+          </li>
+          <li>More instructions to come.</li>
+        </ol>
         </p>
       </div>
     </div>

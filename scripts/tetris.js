@@ -81,7 +81,11 @@ window.addEventListener(
 
 document.addEventListener("DOMContentLoaded", () => {
   tetrisGame = new TetrisGame();
-  document.addEventListener("keydown", (e) => tetrisGame.handleKeyPress(e));
+  document.addEventListener("keydown", (e) => {
+    if(tetrisGame.active){
+      tetrisGame.handleKeyPress(e);
+    }
+  });
 
   tetrisGame.gameBoard = document.getElementById("tetris-grid");
   for (let i = 0; i < GRID_SIZE; i++) {
