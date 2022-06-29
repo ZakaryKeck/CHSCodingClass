@@ -1,0 +1,12 @@
+.quiz .button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.quiz button {
+    color: #ffffff;
+    background-color: #1e6bb8;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+}

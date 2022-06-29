@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/wordle.css" />
   <link rel="stylesheet" href="assets/css/tetris.css" />
+  <link rel="stylesheet" href="assets/css/quiz.css" />
+
   <link rel="shortcut icon" type="image/x-icon" href="assets/images/CreteLogo.png" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js" charset="utf-8"></script>
 
   <script src="scripts/tabs.js"></script>
   <script src="scripts/wordle.js"></script>
@@ -682,28 +684,6 @@ function draw() {
       </div>
 
       <div id="Day3" class="tabcontent" style="display: none">
-        <p>
-        <h2 style="text-align: center;">Tetris</h2>
-
-        <div class="tetris">
-          <div class="tetris-game-area">
-            <div class="tetris-game">
-              <div id="tetris-grid" class="grid"></div>
-            </div>
-            <div>
-              <div>
-                <h1>Score: <span id="score-display">0</span></h1>
-                <h1>Lines: <span id="lines-score">0</span></h1>
-
-                <button onclick="tetrisGame.start()">Start </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </p>
-      </div>
-
-      <div id="Day4" class="tabcontent" style="display: none">
         <div style="display: flex; flex-direction: column; align-items: center;">
           <h2>Quiz</h2>
           <div id="quiz" class="quiz">
@@ -724,9 +704,53 @@ function draw() {
               <input name="answer" type="radio">
               <span></span>
             </div>
-            <button onclick="quiz.nextQuestion()" style="margin-top:15px">Next Question</button>
+            <div class="button-container">
+              <button id="nextButton" onclick="quiz.nextQuestion()">Next Question</button>
+            </div>
           </div>
+
         </div>
+          <p>
+            <code>document</code> is a keyword in javascript that represents all the elements of the webpage. 
+            You can see the document when you press f12 on a normal computer. I don't think it works on the chromebooks.
+          </p>
+
+          <p>
+            <code>document.getElementById()</code> is a function that does exactly what it sounds like - you get an element 
+            by its id. We use this to update text in our quiz.
+          </p>
+
+          <p>
+            Open the starter code here: <a href="https://codepen.io/zakkeck/pen/poLoLdd" target="_blank">https://codepen.io/zakkeck/pen/poLoLdd</a>
+          </p>
+
+          <p>
+            Let's work together to get the quiz working.
+          </p>
+      </div>
+
+      <div id="Day4" class="tabcontent" style="display: none">
+        <p>
+          <h2 style="text-align: center;">Tetris</h2>
+  
+          <div class="tetris">
+            <div class="tetris-game-area">
+              <div class="tetris-game">
+                <div id="tetris-grid" class="grid"></div>
+              </div>
+              <div>
+                <div>
+                  <h1>Score: <span id="score-display">0</span></h1>
+                  <h1>Lines: <span id="lines-score">0</span></h1>
+  
+                  <button onclick="tetrisGame.start()">Start </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </p>
+
+        
 
       </div>
 
