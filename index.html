@@ -737,27 +737,52 @@ function draw() {
       </div>
 
       <div id="Day4" class="tabcontent" style="display: none">
+        <h2 style="text-align: center;">Tetris</h2>
         <p>
-          <h2 style="text-align: center;">Tetris</h2>
-  
-          <div class="tetris">
-            <div class="tetris-game-area">
-              <div class="tetris-game">
-                <div id="tetris-grid" class="grid"></div>
-              </div>
+          Riddle: You have 25 horses, and you want to find the top 3 fastest horses. You can race 5 horses at a time. 
+          You do not have a watch. How many races would it take to find the 3 fastest horses?
+        </p>
+
+        <div class="tetris">
+          <div class="tetris-game-area">
+            <div class="tetris-game">
+              <div id="tetris-grid" class="grid"></div>
+            </div>
+            <div>
               <div>
-                <div>
-                  <h1>Score: <span id="score-display">0</span></h1>
-                  <h1>Lines: <span id="lines-score">0</span></h1>
-  
-                  <button onclick="tetrisGame.start()">Start </button>
-                </div>
+                <h1>Score: <span id="score-display">0</span></h1>
+                <h1>Lines: <span id="lines-score">0</span></h1>
+
+                <button onclick="tetrisGame.start()">Start </button>
               </div>
             </div>
           </div>
-          </p>
+        </div>
+
+        <p>
+          Starter Code here: <a href="https://codepen.io/zakkeck/pen/zYWxrKQ?editors=0010" target="_blank">https://codepen.io/zakkeck/pen/zYWxrKQ</a>
+        </p>
+
+        <p>
+          Here is a picture of the tetris board with the squares labeled. In programming, all lists start at 0, so the first square is labeled 
+          with a 0. So if <code>GRID_WIDTH</code> is 10, what happens if we start at square 0, and add <code>GRID_WIDTH</code> to our 
+          position? This is the key idea for how we move the pieces down the gameboard.
+        </p>
+        <p>
+          <img src="./assets//images/TetrisBoard.PNG"/>
+        </p>
 
         
+        <p>Change current position to be in the center.</p>
+
+        <p>Fix the 4 directions, so the arrow keys work.</p>
+
+        <p>Let's fix updating the score.</p>
+
+        <p>
+          Let's add a new tetromino shape. Remember that <code>GRID_WIDTH</code> is 10. What shape do we want to make?
+        </p>
+
 
       </div>
 
@@ -783,12 +808,19 @@ function draw() {
 
 &lt;h3&gt;Day 1&lt;/h3&gt;
 &lt;iframe height=&quot;300&quot; style=&quot;width: 75%;&quot; src=&quot;https://codepen.io/zakkeck/embed/oNEBOBJ?default-tab=html%2Cresult&quot;&gt;&lt;/iframe&gt;
+
 &lt;h3&gt;Day 2&lt;/h3&gt;
 &lt;iframe src=&quot;https://openprocessing.org/sketch/1543865/embed/&quot; width=&quot;75%&quot; height=&quot;600&quot;&gt;&lt;/iframe&gt;
 
 &lt;h3&gt;Day 3&lt;/h3&gt;
 &lt;iframe height=&quot;600&quot; style=&quot;width: 75%;&quot; src=&quot;https://codepen.io/zakkeck/embed/poLoLdd?default-tab=html%2Cresult&quot;&gt;&lt;/iframe&gt;
 
+&lt;div&gt; Day 4 &lt;/div&gt;
+&lt;iframe height=&quot;300&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; title=&quot;Untitled&quot; src=&quot;https://codepen.io/zakkeck/embed/zYWxrKQ?default-tab=html%2Cresult&quot; frameborder=&quot;no&quot; loading=&quot;lazy&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/zakkeck/pen/zYWxrKQ&quot;&gt;
+  Untitled&lt;/a&gt; by Zak Keck (&lt;a href=&quot;https://codepen.io/zakkeck&quot;&gt;@zakkeck&lt;/a&gt;)
+  on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
 &lt;/div&gt;
         </pre>
         </p>
