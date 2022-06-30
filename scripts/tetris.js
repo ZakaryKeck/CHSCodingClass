@@ -40,27 +40,19 @@ const iTetromino = [
   [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH + 3],
 ];
 
-// const letterZTetromino = [
-//   [
-//     0,
-//     1,
-//     2,
-//     3,
-//     GRID_WIDTH + 2,
-//     GRID_WIDTH * 2 + 1,
-//     GRID_WIDTH * 3,
-//     GRID_WIDTH * 3 + 1,
-//     GRID_WIDTH * 3 + 2,
-//     GRID_WIDTH * 3 + 3,
-//   ],
-// ];
+const letterZTetromino = [
+  [
+    
+  ],
+];
 
 const theTetrominoes = [
-  lTetromino,
-  zTetromino,
-  tTetromino,
-  oTetromino,
-  iTetromino,
+  // lTetromino,
+  // zTetromino,
+  // tTetromino,
+  // oTetromino,
+  // iTetromino,
+  letterZTetromino
 ];
 
 const colors = ["darkblue", "darkred", "darkviolet", "green", "khaki"];
