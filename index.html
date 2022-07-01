@@ -828,6 +828,68 @@ function draw() {
           &lt;/body&gt;
         </pre>
         </p>
+        <pre>
+          &lt;head&gt;
+&lt;script&gt;
+function changeTab(id, tabName) {
+            let i, tabcontent;
+            tabcontent = document.getElementsByClassName(&quot;tabcontent&quot;);
+            for (i = 0; i &lt; tabcontent.length; i++) {
+              tabcontent[i].style.display = &quot;none&quot;;
+            }
+          
+            document.getElementById(tabName).style.display = &quot;block&quot;;
+          
+            let tabs = document.getElementsByClassName(&quot;tab&quot;);
+            for (i = 0; i &lt; tabs.length; i++) {
+              tabs[i].classList.remove(&quot;active&quot;);
+            }
+          
+            document.getElementById(id).classList.add(&quot;active&quot;);
+          }
+&lt;/script&gt;
+
+&lt;style&gt;
+.active {
+	text-decoration: underline;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body style=&quot;margin: 0px;&quot;&gt;
+	&lt;div style=&quot;height:20%; background-color:blue;&quot;&gt;
+		&lt;h1 style=&quot;text-align: center; padding-top: 5%; color: white;&quot;&gt;CHS Coding Class&lt;/h1&gt;
+	&lt;/div&gt;
+
+	&lt;div style=&quot;display: flex; justify-content: space-between; width: 75%; margin: 0% 10%;&quot;&gt;
+      &lt;h1 id=&quot;WordleTab&quot; onclick=&quot;changeTab(event.currentTarget.id, 'Wordle')&quot; class=&quot;tab active&quot;&gt;
+        Wordle
+      &lt;/h1&gt;
+      &lt;h1 id=&quot;MetronomeTab&quot; onclick=&quot;changeTab(event.currentTarget.id, 'Metronome')&quot; class=&quot;tab&quot;&gt;
+        Metronome
+      &lt;/h1&gt;
+      &lt;h1 id=&quot;QuizTab&quot; onclick=&quot;changeTab(event.currentTarget.id, 'Quiz')&quot; class=&quot;tab&quot;&gt;
+        Quiz
+      &lt;/h1&gt;
+      &lt;h1 id=&quot;TetrisTab&quot; onclick=&quot;changeTab(event.currentTarget.id, 'Tetris')&quot; class=&quot;tab&quot;&gt;
+        Tetris
+      &lt;/h1&gt;
+    &lt;/div&gt;
+	
+	&lt;div style=&quot;display: flex; flex-direction: column; align-items: center;&quot;/&gt;
+		&lt;h2&gt;Hi, my name is Zak. Here are my projects.&lt;/h2&gt;
+
+		&lt;iframe id=&quot;Wordle&quot; class=&quot;tabcontent&quot; height=&quot;800&quot; style=&quot;width: 75%;&quot; src=&quot;https://codepen.io/zakkeck/embed/oNEBOBJ&quot;&gt;&lt;/iframe&gt;
+
+		&lt;iframe id=&quot;Metronome&quot; class=&quot;tabcontent&quot; style=&quot;display: none&quot; src=&quot;https://openprocessing.org/sketch/1543865/embed/&quot; width=&quot;75%&quot; height=&quot;800&quot;&gt;&lt;/iframe&gt;
+
+		&lt;iframe id=&quot;Quiz&quot; class=&quot;tabcontent&quot; style=&quot;display: none&quot; height=&quot;800&quot; width=&quot;75%&quot; src=&quot;https://codepen.io/zakkeck/embed/poLoLdd&quot;&gt;&lt;/iframe&gt;
+
+		&lt;iframe id=&quot;Tetris&quot; class=&quot;tabcontent&quot; style=&quot;display: none&quot; height=&quot;800&quot; width=&quot;75%&quot; src=&quot;https://codepen.io/zakkeck/embed/zYWxrKQ&quot;&gt;&lt;/iframe&gt;
+
+	&lt;/div&gt;
+&lt;/body&gt;
+        </pre>
       </div>
     </div>
 
